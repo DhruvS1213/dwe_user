@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- un-comment this code to enable service worker
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(() => console.log('service worker installed'))
+          .catch(err => console.log('Error', err));
+      }
+    </script>-->
+
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="styles/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/ionic/release/js/ionic.js"></script>
+    <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
+    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <!-- build:js scripts/scripts.js -->
+    <script src="js/app.js"></script>
+    <script src="scripts/configuration.js"></script>
+    <!-- endbuild -->
+  </head>
+  <body ng-app="dweUser" ng-controller="dweUserCtrl as uv">
+
+    <ion-pane>
+      <!--<ion-header-bar class="bar-stable">
+        <h1 class="title">Ionic Blank Starter</h1>
+      </ion-header-bar>-->
+      <ion-content>
+        <div class="heading-wrapper">
+          <h1 class = "eEricssonFont heading-content"> Work Desk</h1>
+          <h1 class = "eEricssonFont heading-content"> of the future</h1>
+        </div>
+        
+        <div>
+          <div class="text-wrapper">
+            <p class="text-content" ng-bind-html="uv.userContentRequest | trustAsHtml"></p>
+          </div>
+
+          <div class="video-wrapper">
+            <img src="/img/videoPoster.jpg">
+          </div>
+        </div>
+
+        <div class="img-wrapper">
+          <ion-slide-box on-slide-changed="slideHasChanged($index)" >
+            <ion-slide  ng-repeat="image in uv.imageArray track by $index">
+              <div><img class="imgContent" ng-src="{{image}}"></div>
+            </ion-slide>
+          </ion-slide-box>
+        </div>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>

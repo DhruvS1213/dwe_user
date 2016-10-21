@@ -1,0 +1,43 @@
+/* Empty. Add your own CSS if you like */
+@font-face{font-family:ericsson_capital_ttregular;src:url(/fonts/ericssoncapitaltt-webfont.woff)}
+
+.eEricssonFont {
+    font-family: ericsson_capital_ttregular,Arial,sans-serif;
+}
+
+.heading-wrapper {
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.heading-content {
+    font-size: 65px;
+    color: #00285F; 
+}
+
+.text-wrapper {
+    width: 550px;
+    padding-top: 20px;
+    padding-left: 30px;
+    text-align: justify;
+    position: relative;
+    float: left;
+}
+
+.text-content {
+    font-size: 14px;
+}
+
+.video-wrapper {   
+    right: 80px;
+    float: right;
+    position: relative;
+}
+
+
+.imgContent{
+    width: 200px !important;
+    height: 150px !important;
+    border-radius: 10px !important;
+    opacity: 0.9 !important;
+}
