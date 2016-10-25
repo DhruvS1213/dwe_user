@@ -8,13 +8,8 @@ angular.module('dweUser', ['ionic'])
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     if(window.cordova && window.cordova.plugins.Keyboard) {
-      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-      // for form inputs)
+    
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-
-      // Don't remove this line unless you know what you are doing. It stops the viewport
-      // from snapping when text inputs are focused. Ionic handles this internally for
-      // a much nicer keyboard experience.
       cordova.plugins.Keyboard.disableScroll(true);
     }
     if(window.StatusBar) {
@@ -23,12 +18,43 @@ angular.module('dweUser', ['ionic'])
   });
 })
 
-.controller('dweUserCtrl', ['$sce','$http', function($sce, $http, $ionicSlideBoxDelegate){
+.controller('dweUserCtrl', ['$scope','$sce','$http','$ionicModal', '$ionicSlideBoxDelegate', function($scope, $sce, $http,$ionicModal,$ionicSlideBoxDelegate){
   var vm = this;
-    var temp = Math.floor((Math.random() * 100) + 1);
-    vm.imageArray = new Array();
-     
+  vm.data = {};
+  vm.imageDescription = [];
+  vm.videoPath = [];
 
+  var setupSlider = function() {
+    vm.data.sliderOptions = {
+
+      initialSlide: 0,
+      direction: 'horizontal', 
+      speed: 300,
+      slidesPerView: 3
+        };
+    };
+    
+    setupSlider();
+
+  var temp = Math.floor((Math.random() * 100) + 1);
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      $scope.modal = modal;
+    });
+
+    vm.closeModal = function() {
+        console.log('closemodal function');
+      $scope.modal.hide();
+    };
+
+    vm.goToSlide = function(index) {
+        console.log('goto slide function')
+      $scope.modal.show();
+      $ionicSlideBoxDelegate.slide(index);
+    };    
+ 
     console.log('user-view controller');
     vm.myInterval = 3000;
     
@@ -60,17 +86,63 @@ angular.module('dweUser', ['ionic'])
         $http({
         method: 'GET',
         url: 'http://localhost:3000/getImageAddress'
-    }).then(function successCallback(response)
+        }).then(function successCallback(response)
         {
             //vm.imageArray = response.data.split(',');
-            vm.imageArray = response.data;
+            vm.data.imgArray = response.data;
+            console.log(vm.data.imgArray);
         }, function errorCallback(error)
         {
             console.log('error');
         });
 
-    vm.videoSRC =  $sce.trustAsResourceUrl("http://localhost:3000/uploads/vid.mp4?t="+ temp);
+        $http({
+            method: 'GET',
+            url: 'http://localhost:3000/getImageDescription'
+        }).then(function successCallback(response){
+            vm.imageDescription = response.data;
+            console.log(vm.imageDescription);
+        }, function errorCallback(error){
+            console.log('error in fetching image description');
+        });
+
+        $http({
+            method:'GET',
+            url: 'http://localhost:3000/getVideoAddress'
+        }).then(function successCallback(response){
+            for(video in response.data)
+            {
+                vm.videoPath.push($sce.trustAsResourceUrl(response.data[video]));
+            }
+            console.log('video paths',vm.videoPath);
+        }, function errorCallback(err){
+            console.log('error in fetching video paths');
+        })
+
+
+// Video Modal
+
+ $ionicModal.fromTemplateUrl('templates/modalVideo.html', function($ionicModal) {
+    $scope.modal2 = $ionicModal;
+}, {
+    scope: $scope,
+    animation: 'slide-in-up'
+});
+
+
+$scope.openModalVideo = function() {
+    
+    //$scope.videoPath = vm.videoSRC;
+    $scope.modal2.show();
+}
+
+
+// vm.videoSRC =  $sce.trustAsResourceUrl("http://localhost:3000/uploads/vid.mp4?t="+ temp);
+
 }])
+
+
+
 
 .filter('trustAsHtml', function($sce) { 
     return $sce.trustAsHtml; 

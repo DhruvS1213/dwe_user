@@ -18,10 +18,18 @@
 
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/ionic/release/css/ionic.css" />
+       <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <!-- <script type="text/javascript" src="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script> -->
+
+    <link href="http://code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+    <script src="http://code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.4/angular.min.js"></script>
+
+      <!--  <script type="text/javascript" src="slick.js"></script> -->
     <!-- endbower -->
     <!-- endbuild -->
     <link href="css/style.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/> -->
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="styles/ionic.app.css" rel="stylesheet">
@@ -30,55 +38,90 @@
     <!-- ionic/angularjs js -->
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
+<!--   <script src="bower_components/angular/angular.js"></script>
+ --><!--     <script src="bower_components/angular-animate/angular-animate.js"></script>  -->
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<!--     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/ionic/release/js/ionic.js"></script>
     <script src="bower_components/ionic/release/js/ionic-angular.js"></script>
-    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script>
+    <script src="bower_components/ngCordova/dist/ng-cordova.js"></script> -->
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
-
+   <!--  <script src="cordova.js"></script>
+ -->
     <!-- your app's js -->
     <!-- build:js scripts/scripts.js -->
-    <script src="js/app.js"></script>
-    <script src="scripts/configuration.js"></script>
+<!--     <script src="scripts/configuration.js"></script> -->
     <!-- endbuild -->
   </head>
   <body ng-app="dweUser" ng-controller="dweUserCtrl as uv">
 
-    <ion-pane>
+
       <!--<ion-header-bar class="bar-stable">
         <h1 class="title">Ionic Blank Starter</h1>
       </ion-header-bar>-->
-      <ion-content>
+    <ion-view>
         <div class="heading-wrapper">
           <h1 class = "eEricssonFont heading-content"> Work Desk</h1>
           <h1 class = "eEricssonFont heading-content"> of the future</h1>
         </div>
+
         
-        <div>
-          <div class="text-wrapper">
+      
+        <div class="text-wrapper">
             <p class="text-content" ng-bind-html="uv.userContentRequest | trustAsHtml"></p>
-          </div>
-
-          <div class="video-wrapper">
-            <img src="/img/videoPoster.jpg">
-          </div>
         </div>
+        
 
-        <div class="img-wrapper">
-          <ion-slide-box on-slide-changed="slideHasChanged($index)" >
-            <ion-slide  ng-repeat="image in uv.imageArray track by $index">
-              <div><img class="imgContent" ng-src="{{image}}"></div>
-            </ion-slide>
-          </ion-slide-box>
-        </div>
-      </ion-content>
-    </ion-pane>
+        <div class="video-wrapper">
+          <img src="/img/videoPoster.jpg" ng-click="openModalVideo()">
+          <!--<button ng-click="vm.displayVideo()"><img src="/img/play-button.png"></button>-->
+        </div> 
+        
+        <ion-slides class="img-wrapper" options="uv.data.sliderOptions" slider="uv.data.sliderDelegate">
+          <ion-slide-page ng-repeat="img in uv.data.imgArray track by $index">
+            <img class="img-content" ng-click="uv.goToSlide($index)" ng-src={{img}} >
+          </ion-slide-page>
+        </ion-slides>
+
+        <!--<ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+          <ion-slide ng-repeat="img in uv.data.imgArray track by $index">
+            <div class="img-wrapper"><img class="img-content" ng-click="uv.goToSlide($index)" ng-src={{img}} ></div>
+          </ion-slide>
+        </ion-slide-box>-->
+    </ion-view>
+        <script id="templates/modal.html" type="text/ng-template">
+          <ion-modal-view>
+              <div class="modal image-modal transparent" ng-click="uv.closeModal()">
+                <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+                  <ion-slide ng-repeat="img in uv.data.imgArray track by $index">
+                    <img ng-src="{{img}}" />
+                    <p>{{uv.imageDescription[$index]}}</p>
+                  </ion-slide>
+                </ion-slide-box>
+              </div>
+          </ion-modal-view>
+        </script>
+
+        <script id="templates/modalVideo.html" type="text/ng-template">
+        <ion-modal-view>
+            <div ng-click="uv.closeModal()">
+            <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="false">
+              <ion-slide ng-repeat="video in uv.videoPath track by $index">
+                <video id="my-video" class="video-js videocontent" controls preload="auto"
+                       data-setup="{}">
+                         <source ng-src="{{video}}" type='video/mp4'>
+                </video>
+              </ion-slide>
+            </ion-slide-box>
+          </div>
+        </ion-modal-view>
+      </script>
+      
+  <script src="js/app.js"></script>
+  <script src="http://vjs.zencdn.net/5.11.7/video.js"></script>
+           
   </body>
 </html>
