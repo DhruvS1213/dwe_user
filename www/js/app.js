@@ -23,7 +23,7 @@ angular.module('dweUser', ['ionic'])
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
-    vm.imageDescription = [];
+    vm.imgDescription = [];
     vm.videoPath = [];
 
     var setupSlider = function() {
@@ -97,14 +97,27 @@ angular.module('dweUser', ['ionic'])
             console.log('error');
     });
 
+    // $http({
+    //     method: 'GET',
+    //     url: 'http://localhost:3000/getImageDescription'
+    // }).then(function successCallback(response){
+    //         vm.imageDescription = response.data;
+    //         console.log(vm.imageDescription);
+    // }, function errorCallback(error){
+    //     console.log('error in fetching image description');
+    // });
+
     $http({
         method: 'GET',
-        url: 'http://localhost:3000/getImageDescription'
-    }).then(function successCallback(response){
-            vm.imageDescription = response.data;
-            console.log(vm.imageDescription);
-    }, function errorCallback(error){
-        console.log('error in fetching image description');
+        url: 'http://localhost:3000/getImgJSON'
+    }).then(function successCallback(res){
+        console.log('json object recieved');
+        vm.imgJSON = res.data;
+        console.log(vm.imgJSON);
+        for(var i=0;i<vm.imgJSON.length;i++)
+        {
+            vm.imgDescription[i] = vm.imgJSON[i].description;
+        }
     });
 
         $http({
