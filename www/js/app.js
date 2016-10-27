@@ -19,29 +19,31 @@ angular.module('dweUser', ['ionic'])
 })
 
 .controller('dweUserCtrl', ['$scope','$sce','$http','$ionicModal', '$ionicSlideBoxDelegate', function($scope, $sce, $http,$ionicModal,$ionicSlideBoxDelegate){
-  var vm = this;
-  vm.data = {};
-  vm.imageDescription = [];
-  vm.videoPath = [];
+    console.log('user-view controller');
+    var vm = this;
+    var temp = Math.floor((Math.random() * 100) + 1);
+    vm.data = {};
+    vm.imageDescription = [];
+    vm.videoPath = [];
 
-  var setupSlider = function() {
-    vm.data.sliderOptions = {
-
-      initialSlide: 0,
-      direction: 'horizontal', 
-      speed: 300,
-      slidesPerView: 3
+    var setupSlider = function() {
+        vm.data.sliderOptions = {
+            initialSlide: 0,
+            direction: 'horizontal', 
+            speed: 300,
+            slidesPerView: 3,
+            pageination:true
         };
     };
-    
+        
     setupSlider();
 
-  var temp = Math.floor((Math.random() * 100) + 1);
-  $ionicModal.fromTemplateUrl('templates/modal.html', {
-      scope: $scope,
-      animation: 'slide-in-up'
+ 
+    $ionicModal.fromTemplateUrl('templates/modal.html', {
+        scope: $scope,
+        animation: 'slide-in-up'
     }).then(function(modal) {
-      $scope.modal = modal;
+        $scope.modal = modal;
     });
 
     vm.closeModal = function() {
@@ -55,7 +57,7 @@ angular.module('dweUser', ['ionic'])
       $ionicSlideBoxDelegate.slide(index);
     };    
  
-    console.log('user-view controller');
+    
     vm.myInterval = 3000;
     
     $http({
@@ -81,30 +83,29 @@ angular.module('dweUser', ['ionic'])
         }, function errorCallback(response)
         {
             console.log('error');
-        });
+    });
 
-        $http({
+    $http({
         method: 'GET',
         url: 'http://localhost:3000/getImageAddress'
-        }).then(function successCallback(response)
+    }).then(function successCallback(response)
         {
-            //vm.imageArray = response.data.split(',');
             vm.data.imgArray = response.data;
             console.log(vm.data.imgArray);
         }, function errorCallback(error)
         {
             console.log('error');
-        });
+    });
 
-        $http({
-            method: 'GET',
-            url: 'http://localhost:3000/getImageDescription'
-        }).then(function successCallback(response){
+    $http({
+        method: 'GET',
+        url: 'http://localhost:3000/getImageDescription'
+    }).then(function successCallback(response){
             vm.imageDescription = response.data;
             console.log(vm.imageDescription);
-        }, function errorCallback(error){
-            console.log('error in fetching image description');
-        });
+    }, function errorCallback(error){
+        console.log('error in fetching image description');
+    });
 
         $http({
             method:'GET',
@@ -120,28 +121,20 @@ angular.module('dweUser', ['ionic'])
         })
 
 
-// Video Modal
 
- $ionicModal.fromTemplateUrl('templates/modalVideo.html', function($ionicModal) {
-    $scope.modal2 = $ionicModal;
-}, {
-    scope: $scope,
-    animation: 'slide-in-up'
-});
-
-
-$scope.openModalVideo = function() {
+    // Video Modal
+    $ionicModal.fromTemplateUrl('templates/modalVideo.html', function($ionicModal) {
+        $scope.modal2 = $ionicModal;
+    }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+    });
     
-    //$scope.videoPath = vm.videoSRC;
-    $scope.modal2.show();
-}
-
-
-// vm.videoSRC =  $sce.trustAsResourceUrl("http://localhost:3000/uploads/vid.mp4?t="+ temp);
+    $scope.openModalVideo = function() {
+        $scope.modal2.show();
+    }
 
 }])
-
-
 
 
 .filter('trustAsHtml', function($sce) { 
