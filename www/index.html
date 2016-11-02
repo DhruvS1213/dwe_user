@@ -80,11 +80,11 @@
         
 
         <div class="video-wrapper">
-          <img class="video-position" src="/img/play_video.png" ng-click="openModalVideo()">
+          <img class="video-position" src="img/play_video.png" ng-click="openModalVideo()">
           <!--<button ng-click="vm.displayVideo()"><img src="/img/play-button.png"></button>-->
         </div> 
          <div class="triangle-bottomright">
-           <img class="background-img" src="/img/Logo.png" />
+           <img class="background-img" src="img/Logo.png" />
           </div>
         
         <ion-slides class="img-wrapper" options="uv.data.sliderOptions" slider="uv.data.sliderDelegate">
@@ -104,9 +104,9 @@
           <ion-modal-view>
               <div class="modal image-modal transparent">
               <div class="button-position">
-                <img src="/img/close_icon.png" height="40px" width="40px" ng-click="uv.closeModal()">
+                <img src="img/close_icon.png" height="40px" width="40px" ng-click="uv.closeModal()">
               </div> 
-                <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true">
+                <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true" pager-click="uv.slide(index)">
                  
                   <ion-slide ng-repeat="img in uv.data.imgArray track by $index">
                    <!--  <div  style="width: 60%; float:left"> -->
@@ -128,9 +128,9 @@
         <ion-modal-view>
             <div class="modal image-modal transparent" >
                <div class="button-position">
-                <img src="/img/close_icon.png" height="40px" width="40px" ng-click="uv.closeModalVideo()">
+                <img src="img/close_icon.png" height="40px" width="40px" ng-click="uv.closeModalVideo()">
               </div>
-            <ion-slide-box on-slide-changed="slideChanged(index);uv.stopVideo()" show-pager="true">
+            <ion-slide-box on-slide-changed="slideChanged(index);uv.stopVideo()" show-pager = "true" pager-click="uv.slide(index)">
               <ion-slide ng-repeat="video in uv.videoPath track by $index">
               <div class="modal-div">
                 <video id="my-video" class="video-js videocontent" controls preload="auto"
