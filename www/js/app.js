@@ -60,15 +60,20 @@ angular.module('dweUser', ['ionic'])
 
     vm.closeModalVideo = function() {
         console.log('closemodal function');
-        vid.pause();
-        vid.currentTime = 0;
+        $('video').each(function(){
+            this.pause();
+            this.currentTime = 0;
+        });
+        
         $scope.modal2.hide();
     };
 
     vm.stopVideo = function(){
-        vid.pause();
-        vid.currentTime = 0;
-    }
+      $('video').each(function(){
+            this.pause();
+            this.currentTime = 0;
+        });  
+    };
  
     
     vm.myInterval = 3000;
@@ -90,7 +95,6 @@ angular.module('dweUser', ['ionic'])
     
     $scope.openModalVideo = function() {
         $scope.modal2.show();
-        vid = document.getElementById('my-video');
     }
 
 }])
