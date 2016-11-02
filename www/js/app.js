@@ -23,7 +23,7 @@ angular.module('dweUser', ['ionic'])
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
-    vm.imgDescription = [];
+    vm.imageDescription = [];
     vm.videoPath = [];
 
     var setupSlider = function() {
@@ -56,6 +56,11 @@ angular.module('dweUser', ['ionic'])
       $scope.modal.show();
       $ionicSlideBoxDelegate.slide(index);
     };    
+
+    vm.closeModalVideo = function() {
+        console.log('closemodal function');
+      $scope.modal2.hide();
+    };
  
     
     vm.myInterval = 3000;
@@ -116,7 +121,7 @@ angular.module('dweUser', ['ionic'])
         console.log(vm.imgJSON);
         for(var i=0;i<vm.imgJSON.length;i++)
         {
-            vm.imgDescription[i] = vm.imgJSON[i].description;
+            vm.imageDescription[i] = vm.imgJSON[i].description;
         }
     });
 

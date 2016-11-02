@@ -86,18 +86,30 @@
 }
 
 .modal {
-   width: 900px;
+  /* width: 900px;
    height: 560px;
    top:130px;
-   left:60px;
+   left:60px;*/
+  width:100% !important;
+  height: 100% !important;
+  top:0px;
+  left: 0px;
   border-radius: 10px;
   background: transparent !important;
 }
 
-.video-position{
-    left:40px;
-    top: 0px;
+.modal-div{
+
+    top: 120px;
     position: relative;
+    padding-left: 55px;
+    padding-right: 55px;
+}
+
+.video-position{
+    left: 40px;
+    top: -24px;
+    position: absolute;
 }
 
 .triangle-bottomright {
@@ -120,8 +132,8 @@
 
 .slider-pager 
 {
- color: #000;
- top:470px !important;
+ color: #fff;
+ top:590px !important;
 }
 .slider-pager-page.active
 {
@@ -129,7 +141,18 @@ color: #f90;
 }
 
 
+.button-position{
+    left: 960px;
+    position: relative;
+    top: 60px;
+    z-index: 20 !important;
+}
 
+
+.slider-pager .slider-pager-page {
+color:#fff;
+
+}
 
 @media (max-width: 1024px) {
   .active .modal-backdrop-bg {
