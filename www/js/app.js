@@ -18,14 +18,14 @@ angular.module('dweUser', ['ionic'])
   });
 })
 
-.controller('dweUserCtrl', ['$scope','$sce','$http','$ionicModal', '$ionicSlideBoxDelegate', function($scope, $sce, $http,$ionicModal,$ionicSlideBoxDelegate){
+.controller('dweUserCtrl', ['$scope','$sce','$http', '$templateCache','$ionicModal', '$ionicSlideBoxDelegate', function($scope, $sce, $http, $templateCache,$ionicModal,$ionicSlideBoxDelegate){
     console.log('user-view controller');
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
     vm.imageDescription = [];
     vm.videoPath = [];
-
+    
     var setupSlider = function() {
         vm.data.sliderOptions = {
             initialSlide: 0,
@@ -47,7 +47,8 @@ angular.module('dweUser', ['ionic'])
     });
 
     vm.closeModal = function() {
-        console.log('closemodal function');
+    console.log('closemodal function');
+    $(video).remove()
       $scope.modal.hide();
     };
 
@@ -59,86 +60,25 @@ angular.module('dweUser', ['ionic'])
 
     vm.closeModalVideo = function() {
         console.log('closemodal function');
-      $scope.modal2.hide();
+        vid.pause();
+        vid.currentTime = 0;
+        $scope.modal2.hide();
     };
+
+    vm.stopVideo = function(){
+        vid.pause();
+        vid.currentTime = 0;
+    }
  
     
     vm.myInterval = 3000;
     
-    $http({
-        method: 'GET',
-        url: 'http://localhost:3000/getHeading'
-    }).then(function successCallback(resp)
-    {
-        console.log("'" + resp.data + "'");
-        vm.userHeadingRequest = resp.data;
-        console.log('Sucess!!');
-    }, function errorCallback(response)
-        {
-            console.log('error');
-        });
 
-    $http({
-        method: 'GET',
-        url: 'http://localhost:3000/getPage'
-    }).then(function successCallback(resp)
-        {
-            vm.userContentRequest = resp.data;
-            console.log('Sucess!!');
-        }, function errorCallback(response)
-        {
-            console.log('error');
-    });
+     vm.data.imgArray = ['/img/img-2.jpg','/img/img-3.jpg','/img/img-4.jpg','/img/img-5.jpg']
+     vm.imageDescription = ['Personally, after having a car for several years, I’ve gone without for the past several years that I’ve lived in Stockholm. And whenever we thought about getting one, the counterpoint always was ‘What’s the point? We only need it for maybe one day a month tops, and having it here in the city will end up costing us money.’ But with the 01, we could lend it to friends without a hassle, or even try to balance the cost of it out by being part of the car-sharing solution.', 'Christine helps drive the social media activation of the Networked Society and believes in all things connected. A communicator and storyteller by trade, she has been excited about the future since she was a kid—and is still waiting for her self-driving flying car. Follow Christine on Twitter @christineluby', 'As 4G LTE and smartphones have penetrated the developed markets, the world has started to prepare for 5G. So what are the five most important innovations we can expect with 5G?', 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'];
 
-    $http({
-        method: 'GET',
-        url: 'http://localhost:3000/getImageAddress'
-    }).then(function successCallback(response)
-        {
-            vm.data.imgArray = response.data;
-            console.log(vm.data.imgArray);
-        }, function errorCallback(error)
-        {
-            console.log('error');
-    });
-
-    // $http({
-    //     method: 'GET',
-    //     url: 'http://localhost:3000/getImageDescription'
-    // }).then(function successCallback(response){
-    //         vm.imageDescription = response.data;
-    //         console.log(vm.imageDescription);
-    // }, function errorCallback(error){
-    //     console.log('error in fetching image description');
-    // });
-
-    $http({
-        method: 'GET',
-        url: 'http://localhost:3000/getImgJSON'
-    }).then(function successCallback(res){
-        console.log('json object recieved');
-        vm.imgJSON = res.data;
-        console.log(vm.imgJSON);
-        for(var i=0;i<vm.imgJSON.length;i++)
-        {
-            vm.imageDescription[i] = vm.imgJSON[i].description;
-        }
-    });
-
-        $http({
-            method:'GET',
-            url: 'http://localhost:3000/getVideoAddress'
-        }).then(function successCallback(response){
-            for(video in response.data)
-            {
-                vm.videoPath.push($sce.trustAsResourceUrl(response.data[video]));
-            }
-            console.log('video paths',vm.videoPath);
-        }, function errorCallback(err){
-            console.log('error in fetching video paths');
-        })
-
-
+    vm.videoPath.push($sce.trustAsResourceUrl('//www.kaltura.com/p/1614541/sp/0/playManifest/entryId/1_vc8f3h2d/format/url/flavorParamId/487111/video'));
+    vm.videoPath.push($sce.trustAsResourceUrl('//www.kaltura.com/p/1614541/sp/0/playManifest/entryId/1_2pg51cnc/format/url/flavorParamId/487111/video'));
 
     // Video Modal
     $ionicModal.fromTemplateUrl('templates/modalVideo.html', function($ionicModal) {
@@ -150,6 +90,7 @@ angular.module('dweUser', ['ionic'])
     
     $scope.openModalVideo = function() {
         $scope.modal2.show();
+        vid = document.getElementById('my-video');
     }
 
 }])
