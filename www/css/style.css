@@ -107,9 +107,9 @@
 }
 
 .video-position{
-    left: 40px;
-    top: -24px;
-    position: absolute;
+    left: 660px;
+    top: 160px;
+    position: fixed;
 }
 
 .triangle-bottomright {

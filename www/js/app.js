@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('dweUser', ['ionic'])
+angular.module('dweUser', ['ionic', 'ui.router'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -17,6 +17,17 @@ angular.module('dweUser', ['ionic'])
     }
   });
 })
+
+.config(function($stateProvider, $urlRouterProvider){
+    $urlRouterProvider.otherwise('/home');
+    $stateProvider
+        .state('home', {
+            url: '/home',
+            templateUrl: 'templates/home.html'
+        });
+})
+
+
 
 .controller('dweUserCtrl', ['$scope','$sce','$http','$ionicModal', '$ionicSlideBoxDelegate', function($scope, $sce, $http,$ionicModal,$ionicSlideBoxDelegate){
     console.log('user-view controller');
@@ -38,13 +49,25 @@ angular.module('dweUser', ['ionic'])
         
     setupSlider();
 
- 
+    //Image modal
     $ionicModal.fromTemplateUrl('templates/modal.html', {
         scope: $scope,
         animation: 'slide-in-up'
     }).then(function(modal) {
         $scope.modal = modal;
     });
+
+    // Video Modal
+    $ionicModal.fromTemplateUrl('templates/modalVideo.html', function($ionicModal) {
+        $scope.modal2 = $ionicModal;
+    }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+    });
+    
+    $scope.openModalVideo = function() {
+        $scope.modal2.show();
+    };
 
     vm.closeModal = function() {
         console.log('closemodal function');
@@ -146,17 +169,7 @@ angular.module('dweUser', ['ionic'])
 
 
 
-    // Video Modal
-    $ionicModal.fromTemplateUrl('templates/modalVideo.html', function($ionicModal) {
-        $scope.modal2 = $ionicModal;
-    }, {
-        scope: $scope,
-        animation: 'slide-in-up'
-    });
     
-    $scope.openModalVideo = function() {
-        $scope.modal2.show();
-    }
 
 }])
 
