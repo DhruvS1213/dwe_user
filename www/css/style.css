@@ -1,5 +1,5 @@
 /* Empty. Add your own CSS if you like */
-@font-face{font-family:ericsson_capital_ttregular;src:url(/fonts/ericssoncapitaltt-webfont.woff)}
+@font-face{font-family:ericsson_capital_ttregular;src:url(../fonts/ericssoncapitaltt-webfont.woff)}
 
 .eEricssonFont {
     font-family: ericsson_capital_ttregular,Arial,sans-serif;
