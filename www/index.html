@@ -102,7 +102,7 @@
               <div class="button-position">
                 <img src="/img/close_icon.png" height="40px" width="40px" ng-click="uv.closeModal()">
               </div> 
-                <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true">
+                <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true" pager-click="uv.slide(index)">
                  
                   <ion-slide ng-repeat="img in uv.data.imgArray track by $index">
                    <!--  <div  style="width: 60%; float:left"> -->
@@ -126,12 +126,12 @@
                <div class="button-position">
                 <img src="/img/close_icon.png" height="40px" width="40px" ng-click="uv.closeModalVideo()">
               </div>
-            <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true">
+            <ion-slide-box on-slide-changed="slideChanged(index);uv.stopVideo()" show-pager="true" pager-click="uv.slide(index)">
               <ion-slide ng-repeat="video in uv.videoPath track by $index">
               <div class="modal-div">
                 <video id="my-video" class="video-js videocontent" controls preload="auto"
                        data-setup="{}">
-                         <source ng-src="{{video}}" type='video/mp4'>
+                         <source ng-src="{{video}}" type='video/webm'>
                 </video>
               </div>
               </ion-slide>

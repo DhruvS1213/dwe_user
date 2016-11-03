@@ -48,7 +48,14 @@ angular.module('dweUser', ['ionic'])
 
     vm.closeModal = function() {
         console.log('closemodal function');
-      $scope.modal.hide();
+        $scope.modal.hide();
+    };
+
+    vm.stopVideo = function(){
+      $('video').each(function(){
+            this.pause();
+            this.currentTime = 0;
+        });  
     };
 
     vm.goToSlide = function(index) {
@@ -59,7 +66,16 @@ angular.module('dweUser', ['ionic'])
 
     vm.closeModalVideo = function() {
         console.log('closemodal function');
-      $scope.modal2.hide();
+        $('video').each(function(){
+            this.pause();
+            this.currentTime = 0;
+        }); 
+        $scope.modal2.hide();
+    };
+
+    vm.slide = function(index) {
+        console.log('slide pager');
+        $ionicSlideBoxDelegate.slide(index);
     };
  
     
@@ -101,16 +117,6 @@ angular.module('dweUser', ['ionic'])
         {
             console.log('error');
     });
-
-    // $http({
-    //     method: 'GET',
-    //     url: 'http://localhost:3000/getImageDescription'
-    // }).then(function successCallback(response){
-    //         vm.imageDescription = response.data;
-    //         console.log(vm.imageDescription);
-    // }, function errorCallback(error){
-    //     console.log('error in fetching image description');
-    // });
 
     $http({
         method: 'GET',
