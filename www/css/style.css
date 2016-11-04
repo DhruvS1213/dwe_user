@@ -5,6 +5,15 @@
     font-family: ericsson_capital_ttregular,Arial,sans-serif;
 }
 
+/* Landscape */
+@media only screen 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
+  and (orientation: landscape) 
+  and (-webkit-min-device-pixel-ratio: 1) {
+
+
+
 .heading-wrapper {
     padding-top: 20px;
     padding-left: 30px;
@@ -29,6 +38,7 @@
     padding-top: 20px;
     padding-left: 20px;
     position: relative;
+    height: 150px;
 }
 
 .img-content{
@@ -62,6 +72,7 @@
   right: 0;
   top: 0;
 }
+
 .slider {
   width: 100%;
   height: 100%;
@@ -124,7 +135,7 @@
 }
 
 .background-img{
-        position: absolute !important;
+    position: absolute !important;
     margin-top: 500px;
     z-index: 3;
     margin-left: -250px;
@@ -135,6 +146,7 @@
  color: #fff;
  top:590px !important;
 }
+
 .slider-pager-page.active
 {
 color: #f90;
@@ -154,22 +166,45 @@ color:#fff;
 
 }
 
-@media (max-width: 1024px) {
-  .active .modal-backdrop-bg {
+.active .modal-backdrop-bg {
     opacity: .8;
   }
-  .modal-backdrop-bg {
+
+.modal-backdrop-bg {
     -webkit-transition: opacity 300ms ease-in-out;
     transition: opacity 300ms ease-in-out;
     background-color: #000;
     opacity: 0;
   }
-}
+
 
 .row.noPadding{
   padding:0 !important;
 }
+
 .col.noPadding{
   padding:0 !important;
 }
+
+.modal-imageContent{
+
+    height: 445px;
+    width: 460px;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.modal-textContent{    
+    width: 50%;
+    float: right;
+    background-color: white;
+    height: 445px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+
+
+}
+
 
