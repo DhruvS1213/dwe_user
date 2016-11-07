@@ -106,11 +106,11 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     
     $http({
         method: 'GET',
-        url: 'http://localhost:3000/getHeading'
+        url: 'http://localhost:9000/api/contents'
     }).then(function successCallback(resp)
     {
-        console.log("'" + resp.data + "'");
-        vm.userHeadingRequest = resp.data;
+        console.log(resp.data[0].title);
+        vm.userHeadingRequest = resp.data[0].title;
         console.log('Sucess!!');
     }, function errorCallback(response)
         {
@@ -119,10 +119,10 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     $http({
         method: 'GET',
-        url: 'http://localhost:3000/getPage'
+        url: 'http://localhost:9000/api/contents'
     }).then(function successCallback(resp)
         {
-            vm.userContentRequest = resp.data;
+            vm.userContentRequest = resp.data[0].textContent;
             console.log('Sucess!!');
         }, function errorCallback(response)
         {
@@ -131,10 +131,13 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     $http({
         method: 'GET',
-        url: 'http://localhost:3000/getImageAddress'
+        url: 'http://localhost:9000/api/contents'
     }).then(function successCallback(response)
         {
-            vm.data.imgArray = response.data;
+            console.log(response.data[0].imageContent);
+            var my = response.data[0].imageContent.split(",");
+            console.log(my);
+            vm.data.imgArray = my;
             console.log(vm.data.imgArray);
         }, function errorCallback(error)
         {
@@ -156,11 +159,15 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
         $http({
             method:'GET',
-            url: 'http://localhost:3000/getVideoAddress'
+            url: 'http://localhost:9000/api/contents'
         }).then(function successCallback(response){
-            for(video in response.data)
-            {
-                vm.videoPath.push($sce.trustAsResourceUrl(response.data[video]));
+          
+                console.log(response.data[0].videoContent);
+                var me = response.data[0].videoContent.split(",");
+                console.log(me);
+                for(i in me)
+                {
+                vm.videoPath.push($sce.trustAsResourceUrl(me[i]));
             }
             console.log('video paths',vm.videoPath);
         }, function errorCallback(err){
