@@ -1,8 +1,3 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 angular.module('dweUser', ['ionic', 'ui.router'])
 
 .run(function($ionicPlatform) {
@@ -34,6 +29,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
+    vm.data.imgArray=[];
     vm.imageDescription = [];
     vm.videoPath = [];
 
@@ -109,75 +105,54 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         url: 'http://localhost:9000/api/contents'
     }).then(function successCallback(resp)
     {
+        console.log(resp.data[0]);
         console.log(resp.data[0].title);
-        vm.userHeadingRequest = resp.data[0].title;
+        if(resp.data[0].title === undefined){
+            vm.userHeadingRequest = '';
+        }
+        else{
+            vm.userHeadingRequest = resp.data[0].title;    
+        }
+
+        if(resp.data[0].textContent === undefined){
+            vm.userContentRequest = '';    
+        }
+        else{
+            vm.userContentRequest = resp.data[0].textContent;    
+        }
+
+        if(resp.data[0].imageDetail === undefined){
+            vm.data.imgArray = [];
+
+        }
+        else{
+            for(var i=0;i<resp.data[0].imageDetail.length; i++){
+                vm.data.imgArray[i] = resp.data[0].imageDetail[i].imagePath;
+                console.log(vm.data.imgArray);
+                vm.imageDescription[i] = resp.data[0].imageDetail[i].imageDescription;
+            }
+        }
+
+        if(resp.data[0].videoContent === undefined){
+            vm.videoPath = [];
+        }
+        else{
+            var me = resp.data[0].videoContent.split(",");
+            console.log(me);
+            for(i in me)
+            {
+                vm.videoPath.push($sce.trustAsResourceUrl(me[i]));
+            }
+            console.log('video paths',vm.videoPath);
+        }
+                
+        
+
         console.log('Sucess!!');
     }, function errorCallback(response)
         {
             console.log('error');
         });
-
-    $http({
-        method: 'GET',
-        url: 'http://localhost:9000/api/contents'
-    }).then(function successCallback(resp)
-        {
-            vm.userContentRequest = resp.data[0].textContent;
-            console.log('Sucess!!');
-        }, function errorCallback(response)
-        {
-            console.log('error');
-    });
-
-    $http({
-        method: 'GET',
-        url: 'http://localhost:9000/api/contents'
-    }).then(function successCallback(response)
-        {
-            console.log(response.data[0].imageContent);
-            var my = response.data[0].imageContent.split(",");
-            console.log(my);
-            vm.data.imgArray = my;
-            console.log(vm.data.imgArray);
-        }, function errorCallback(error)
-        {
-            console.log('error');
-    });
-
-    $http({
-        method: 'GET',
-        url: 'http://localhost:3000/getImgJSON'
-    }).then(function successCallback(res){
-        console.log('json object recieved');
-        vm.imgJSON = res.data;
-        console.log(vm.imgJSON);
-        for(var i=0;i<vm.imgJSON.length;i++)
-        {
-            vm.imageDescription[i] = vm.imgJSON[i].description;
-        }
-    });
-
-        $http({
-            method:'GET',
-            url: 'http://localhost:9000/api/contents'
-        }).then(function successCallback(response){
-          
-                console.log(response.data[0].videoContent);
-                var me = response.data[0].videoContent.split(",");
-                console.log(me);
-                for(i in me)
-                {
-                vm.videoPath.push($sce.trustAsResourceUrl(me[i]));
-            }
-            console.log('video paths',vm.videoPath);
-        }, function errorCallback(err){
-            console.log('error in fetching video paths');
-        })
-
-
-
-    
-
 }])
 
 
