@@ -133,7 +133,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
             }
         }
 
-        if(resp.data[0].videoContent === undefined){
+        if(resp.data[0].videoContent === undefined || resp.data[0].videoContent.length == 0){
             vm.videoPath = [];
         }
         else{
