@@ -88,6 +88,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     }
 
     vm.initializeListener = function(index){
+        console.log('inside initialize listner');
         document.getElementById('my-video' + index).addEventListener('ended', myHandler1, false)
         function myHandler1(e){
             console.log('video ended...');
