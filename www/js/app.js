@@ -24,7 +24,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
 
 
-.controller('dweUserCtrl', ['$scope','$sce','$http','$ionicModal', '$ionicSlideBoxDelegate', function($scope, $sce, $http,$ionicModal,$ionicSlideBoxDelegate){
+.controller('dweUserCtrl', ['$scope','$sce','$http','$ionicModal', '$ionicSlideBoxDelegate', '$timeout', function($scope, $sce, $http,$ionicModal,$ionicSlideBoxDelegate, $timeout){
     console.log('user-view controller');
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
@@ -32,6 +32,8 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.data.imgArray=[];
     vm.imageDescription = [];
     vm.videoPath = [];
+    var imageModalTimer;
+    var videoModalTimer;
 
     var setupSlider = function() {
         vm.data.sliderOptions = {
@@ -60,6 +62,18 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         scope: $scope,
         animation: 'slide-in-up'
     });
+
+    vm.startImageTimer = function(){
+       imageModalTimer =  $timeout(function () {
+            vm.closeModal();
+            }, 5000);
+        console.log('release: timer started');
+    };
+
+    vm.stopImageTimer = function(){
+        $timeout.cancel(imageModalTimer);
+        console.log('touch: timer stopped');
+    };
     
     $scope.openModalVideo = function() {
         $scope.modal2.show();
