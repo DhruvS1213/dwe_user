@@ -1,0 +1,21 @@
+<ion-modal-view>
+    <div on-release="uv.startImageTimer()" on-touch="uv.stopImageTimer()" class="modal image-modal transparent">
+    <div class="button-position">
+    <img src="img/close_icon.png" height="40px" width="40px" ng-click="uv.closeModal()">
+    </div> 
+    <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true" pager-click="uv.slide(index)">
+        
+        <ion-slide ng-repeat="img in uv.data.imgArray track by $index">
+        <!--  <div  style="width: 60%; float:left"> -->
+        <div class="modal-div">
+        <div class="modal-partition">
+        <img class="modal-imageContent" ng-src="{{img}}"  />
+        </div>
+        <div class="modal-textContent">
+        <p class="img-description"> {{uv.imageDescription[$index]}}</p>
+        </div>
+        </div>
+        </ion-slide>
+    </ion-slide-box>
+    </div>
+</ion-modal-view>
