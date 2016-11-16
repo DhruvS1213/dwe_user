@@ -6,9 +6,14 @@
 angular.module('dweUser', ['ionic', 'ui.router'])
 
 .run(function($ionicPlatform) {
+  
   $ionicPlatform.ready(function() {
+    document.addEventListener("deviceready", onDeviceReady, false);
+  function onDeviceReady(){
+        alert('device ready');
+    } 
+
     if(window.cordova && window.cordova.plugins.Keyboard) {
-    
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
     }
