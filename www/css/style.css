@@ -203,7 +203,99 @@ color:#fff;
     border-bottom-right-radius: 15px;
 }
 
+.img-partition{
+  width: 50%; 
+  float:left;
+}
 
+.text-format{
+  padding:20px;
+}
+
+.feedback-wrapper{
+    float: right;
+    position: relative;
+    top: -140px;
+    left: -60px;
+    font-size: 16px;
+    color: #193066;
+}
+
+
+.feedback-modal{
+
+    width: 70%;
+    background-color: white;
+    height: 500px;
+    align-content: center;
+    left: 16%;
+    position: relative;
+    z-index: 50;
+    top: -30px;
+
+}
+
+.form-div{
+      position: relative;
+    left: 90px;
+    top: 40px;
+}
+
+input[type="text"]{
+
+      height: 45px;
+    border-style: solid;
+    border-width: 0.1px;
+    width: 450px;
+    border-color: grey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.form-spacing{
+      padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+
+.label-text{
+  font-size: 16px;
+}
+
+
+input[type="email"]{
+
+      height: 45px;
+    border-style: solid;
+    border-width: 0.1px;
+    width: 450px;
+    border-color: grey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.comment-wrapper{
+    height: 100px;
+    border-style: solid;
+    border-width: 0.1px;
+    width: 450px;
+    border-color: grey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.button-style{
+    color: white;
+    background-color: #002661;
+    font-size: 18px;
+    width: 450px;
+    height: 45px;
+    border: none;
+    border-radius: 4px;
+    left: 90px;
+    position: relative;
+    top: 35px;
+}
 
 }
 

@@ -201,6 +201,27 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         {
             console.log('error');
         });
+
+//feedback modal
+
+$ionicModal.fromTemplateUrl('templates/modalFeedback.html', function($ionicModal) {
+    $scope.modalFeedback = $ionicModal;
+}, {
+    // Use our scope for the scope of the modal to keep it simple
+    scope: $scope,
+    // The animation we want to use for the modal entrance
+    animation: 'slide-in-up'
+});
+
+$scope.openModalFeedback = function() {
+    $scope.modalFeedback.show();
+}
+
+vm.closeModalFeedback = function() {
+        console.log('closemodal function');
+        $scope.modalFeedback.hide();
+    };
+
 }])
 
 
