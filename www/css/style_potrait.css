@@ -152,10 +152,10 @@ color: #f90;
 
 
 .button-position{
-    left: 700px;
+    left: 660px;
     position: fixed;
-    top: 110px;
-    z-index: 20 !important;
+    top: 200px;
+    z-index: 200 !important;
 }
 
 
@@ -214,9 +214,9 @@ color:#fff;
 .feedback-wrapper{
     float: right;
     position: fixed;
-    top: 170px;
-    left: 620px;
-    font-size: 16px;
+    top: 630px;
+    left: 70px;
+    font-size: 18px;
     color: #193066;
 }
 
