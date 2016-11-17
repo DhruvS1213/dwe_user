@@ -63,6 +63,14 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         animation: 'slide-in-up'
     });
 
+    //Feedback Modal
+    $ionicModal.fromTemplateUrl('templates/modalFeedback.html', function($ionicModal) {
+        $scope.modal3 = $ionicModal;
+    }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+    });
+    
     vm.startImageTimer = function(){
        imageModalTimer =  $timeout(function () {
             vm.closeModal();
@@ -108,7 +116,25 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         }
     }
 
+    //function to open Feedback Modal
+    $scope.openFeedbackModal = function() {
+        $scope.modal3.show();
+        vm.feedbackUserName = '';
+        vm.feedbackUserEmail = '';
+        vm.feedbackUserComments = '';
+    };
 
+    //function to hide the Feedback Modal
+    vm.closeModalFeedback = function() {
+        $scope.modal3.hide();
+    }   
+
+    //function to execute when Feedback is submitted
+    vm.submitFeedback = function() {
+        $http.post('http://10.30.65.41:9000/api/feedbacks', {userName: vm.feedbackUserName, email: vm.feedbackUserEmail, comments: vm.feedbackUserComments }).success(function(res){
+                alert("Feedback Recorded Successfully");
+        });
+    };
 
     $scope.openModalVideo = function(index) {
         $scope.modal2.show();
@@ -129,7 +155,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     };
 
     vm.goToSlide = function(index) {
-        console.log('goto slide function')
+      console.log('goto slide function')
       $scope.modal.show();
       $ionicSlideBoxDelegate.slide(index);
     };    
