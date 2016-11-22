@@ -34,7 +34,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.videoPath = [];
     var imageModalTimer;
     var videoModalTimer;
-
+    var demoId;
     var setupSlider = function() {
         vm.data.sliderOptions = {
             initialSlide: 0,
@@ -131,7 +131,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     //function to execute when Feedback is submitted
     vm.submitFeedback = function() {
-        $http.post('http://10.30.65.41:9000/api/feedbacks', {userName: vm.feedbackUserName, email: vm.feedbackUserEmail, comments: vm.feedbackUserComments }).success(function(res){
+        $http.post('http://localhost:9000/api/feedbacks', {demoId: demoId, userName: vm.feedbackUserName, email: vm.feedbackUserEmail, comments: vm.feedbackUserComments }).success(function(res){
                 alert("Feedback Recorded Successfully");
         });
     };
@@ -183,6 +183,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     }).then(function successCallback(resp)
     {
         console.log(resp.data[0]);
+        demoId = resp.data[0].demoId;
         console.log(resp.data[0].title);
         if(resp.data[0].title === undefined){
             vm.userHeadingRequest = '';
