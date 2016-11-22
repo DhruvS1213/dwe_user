@@ -1,6 +1,6 @@
 angular.module('dweUser', ['ionic', 'ui.router'])
 
-.controller('dweUserCtrl', ['$scope','$sce','$http','$ionicModal', '$ionicSlideBoxDelegate', '$timeout','appConstants' ,function($scope, $sce, $http,$ionicModal,$ionicSlideBoxDelegate, $timeout, appConstants){
+.controller('dweUserCtrl', ['$scope','$sce','$http','$ionicModal', '$ionicSlideBoxDelegate','$ionicPopup' ,'$timeout','appConstants' ,function($scope, $sce, $http,$ionicModal,$ionicSlideBoxDelegate, $ionicPopup ,$timeout, appConstants){
     console.log('user-view controller');
     console.log('timer test', appConstants.timerValue);
     var vm = this;
@@ -51,7 +51,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.startImageTimer = function(){
        imageModalTimer =  $timeout(function () {
             vm.closeModal();
-            }, 10000);
+            }, appConstants.timerValue);
         console.log('release: timer started');
     };
 
@@ -63,7 +63,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.startVideoTimer = function(){
        videoModalTimer = $timeout(function(){
             vm.closeModalVideo();
-        }, 10000);
+        }, appConstants.timerValue);
        console.log('video timer started');
     };
 
@@ -108,9 +108,18 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     //function to execute when Feedback is submitted
     vm.submitFeedback = function() {
-        $http.post('http://localhost:9000/api/feedbacks', {demoId: demoId, userName: vm.feedbackUserName, email: vm.feedbackUserEmail, comments: vm.feedbackUserComments }).success(function(res){
-                alert("Feedback Recorded Successfully");
-        });
+        $http.post(appConstants.url + '/api/feedbacks', {demoId: demoId, userName: vm.feedbackUserName, email: vm.feedbackUserEmail, comments: vm.feedbackUserComments }).success(function(res){
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Thank-you',
+                    template: 'Response recorded Successfully !!'
+                });
+        }, errorCallback(function(error){
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Error',
+                    template: 'Some error in network. Please try again later!!'
+                });
+        }));
+        vm.closeModalFeedback();
     };
 
     $scope.openModalVideo = function(index) {
@@ -156,43 +165,50 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     
     $http({
         method: 'GET',
-        url: 'http://localhost:9000/api/contents'
+        url: appConstants.url + '/api/contents'
     }).then(function successCallback(resp)
     {
-        console.log(resp.data[0]);
-        demoId = resp.data[0].demoId;
-        console.log(resp.data[0].title);
-        if(resp.data[0].title === undefined){
+        content = resp.data[appConstants.demoId - 1];
+        
+        if(appConstants.demoId > resp.data.length){
+            console.log('No such demo exists');
+            console.log('Defaulting to demoId 0');
+            content = resp.data[0]
+        }
+        
+        demoId = content.demoId;
+        console.log(content.title);
+        if(content.title === undefined){
             vm.userHeadingRequest = '';
         }
         else{
-            vm.userHeadingRequest = resp.data[0].title;    
+            vm.userHeadingRequest = content.title;    
         }
 
-        if(resp.data[0].textContent === undefined){
+        if(content.textContent === undefined){
             vm.userContentRequest = '';    
         }
         else{
-            vm.userContentRequest = resp.data[0].textContent;    
+            vm.userContentRequest = content.textContent;    
         }
 
-        if(resp.data[0].imageDetail === undefined){
+        if(content.imageDetail === undefined){
             vm.data.imgArray = [];
 
         }
         else{
-            for(var i=0;i<resp.data[0].imageDetail.length; i++){
-                vm.data.imgArray[i] = resp.data[0].imageDetail[i].imagePath;
+            for(var i=0;i<content.imageDetail.length; i++){
+                vm.data.imgArray[i] =content.imageDetail[i].imagePath;
                 console.log(vm.data.imgArray);
-                vm.imageDescription[i] = resp.data[0].imageDetail[i].imageDescription;
+                vm.imageDescription[i] = content.imageDetail[i].imageDescription;
             }
         }
 
-        if(resp.data[0].videoContent === undefined || resp.data[0].videoContent.length == 0){
+        if(content.videoContent === undefined || content.videoContent.length == 0){
             vm.videoPath = [];
         }
         else{
-            var me = resp.data[0].videoContent.split(",");
+            var me = content.videoContent.split(",");
             console.log(me);
             for(i in me)
             {
