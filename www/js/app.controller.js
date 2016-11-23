@@ -11,7 +11,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.videoPath = [];
     var imageModalTimer;
     var videoModalTimer;
-    var demoId;
+    vm.demoId = appConstants.demoId;
     var setupSlider = function() {
         vm.data.sliderOptions = {
             initialSlide: 0,
@@ -108,17 +108,12 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     //function to execute when Feedback is submitted
     vm.submitFeedback = function() {
-        $http.post(appConstants.url + '/api/feedbacks', {demoId: demoId, userName: vm.feedbackUserName, email: vm.feedbackUserEmail, comments: vm.feedbackUserComments }).success(function(res){
+        $http.post(appConstants.url + '/api/feedbacks', {demoId: vm.demoId, userName: vm.feedbackUserName, email: vm.feedbackUserEmail, comments: vm.feedbackUserComments }).success(function(res){
                 var alertPopup = $ionicPopup.alert({
                     title: 'Thank-you',
                     template: 'Response recorded Successfully !!'
                 });
-        }, errorCallback(function(error){
-                var alertPopup = $ionicPopup.alert({
-                    title: 'Error',
-                    template: 'Some error in network. Please try again later!!'
-                });
-        }));
+        });
         vm.closeModalFeedback();
     };
 
@@ -165,18 +160,10 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     
     $http({
         method: 'GET',
-        url: appConstants.url + '/api/contents'
+        url: appConstants.url + '/api/contents/' + appConstants.demoId
     }).then(function successCallback(resp)
     {
-        content = resp.data[appConstants.demoId - 1];
-        
-        if(appConstants.demoId > resp.data.length){
-            console.log('No such demo exists');
-            console.log('Defaulting to demoId 0');
-            content = resp.data[0]
-        }
-        
-        demoId = content.demoId;
+        content = resp.data;
         console.log(content.title);
         if(content.title === undefined){
             vm.userHeadingRequest = '';
@@ -222,7 +209,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
             console.log('error');
         });
 
-//feedback modal
+
 
 
 }])
