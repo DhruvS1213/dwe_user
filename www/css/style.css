@@ -162,7 +162,7 @@
     .feedback-button{
            left: 790px;
             position: relative;
-            top: 140px;
+            top: 70px;
             z-index: 200 !important;
 
     }
@@ -232,12 +232,12 @@
 
         width: 70%;
         background-color: white;
-        height: 500px;
+        height: 570px;
         align-content: center;
         left: 16%;
         position: relative;
         z-index: 50;
-        top: -30px;
+        top: -100px;
 
     }
 
@@ -260,8 +260,8 @@
     }
 
     .form-spacing{
-        padding-top: 10px;
-        padding-bottom: 30px;
+        padding-top: 8px !important;
+        padding-bottom: 15px !important;
     }
 
 
@@ -359,6 +359,18 @@
         position: relative;
         top: 35px;
     }
+
+.smiley-margin{
+margin-left: 20px;
+    margin-right: 20px
+
+}
+
+.smiley-div{
+
+        padding-top: 15px;
+    padding-bottom: 15px;
+}
 
 }
 
