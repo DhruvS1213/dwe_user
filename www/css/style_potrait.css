@@ -151,11 +151,18 @@ color: #f90;
 }
 
 
-.button-position{
+.feedback-button{
     left: 660px;
     position: fixed;
     top: 200px;
     z-index: 200 !important;
+}
+
+.button-position{
+left: 680px;
+    position: relative;
+    top: 140px;
+    z-index: 20 !important;
 }
 
 

@@ -154,57 +154,65 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     
     vm.myInterval = 3000;
     
-    $http({
-        method: 'GET',
-        url: 'http://localhost:9000/api/contents'
-    }).then(function successCallback(resp)
-    {
-        console.log(resp.data[0]);
-        demoId = resp.data[0].demoId;
-        console.log(resp.data[0].title);
-        if(resp.data[0].title === undefined){
+    vm.populateData= function(contents) { 
+      if(contents.title === undefined){
             vm.userHeadingRequest = '';
         }
         else{
-            vm.userHeadingRequest = resp.data[0].title;    
+            vm.userHeadingRequest = contents.title;    
         }
 
-        if(resp.data[0].textContent === undefined){
+        if(contents.textContent === undefined){
             vm.userContentRequest = '';    
         }
         else{
-            vm.userContentRequest = resp.data[0].textContent;    
+            vm.userContentRequest = contents.textContent;    
         }
 
-        if(resp.data[0].imageDetail === undefined){
+        if(contents.imageDetail === undefined){
             vm.data.imgArray = [];
 
         }
         else{
             for(var i=0;i<resp.data[0].imageDetail.length; i++){
-                vm.data.imgArray[i] = resp.data[0].imageDetail[i].imagePath;
+                vm.data.imgArray[i] = contents.imageDetail[i].imagePath;
                 console.log(vm.data.imgArray);
-                vm.imageDescription[i] = resp.data[0].imageDetail[i].imageDescription;
+                vm.imageDescription[i] = contents.imageDetail[i].imageDescription;
             }
         }
 
-        if(resp.data[0].videoContent === undefined || resp.data[0].videoContent.length == 0){
+        if(contents.videoContent === undefined || contents.videoContent.length == 0){
             vm.videoPath = [];
         }
         else{
-            var me = resp.data[0].videoContent.split(",");
+            var me = contents.videoContent.split(",");
             console.log(me);
             for(i in me)
             {
                 vm.videoPath.push($sce.trustAsResourceUrl(me[i]));
             }
             console.log('video paths',vm.videoPath);
-        }
+        }  
+
+    }
+
+
+    $http({
+        method: 'GET',
+        url: 'http://localhost:9000/api/contents/'+ appConstants.demoId
+    }).then(function successCallback(resp)
+    {
+        var contents = resp.data;
+        console.log('response');
+        console.log(resp.data);
+        vm.populateData(contents);
         console.log('Sucess!!');
     }, function errorCallback(response)
         {
             console.log('error');
-        });
+    });    
+    
+    
 
 //feedback modal
 

@@ -152,12 +152,20 @@
 
 
     .button-position{
-            left: 790px;
+
+    left: 960px;
+    position: relative;
+    top: 60px;
+    z-index: 20 !important;
+    }
+
+    .feedback-button{
+           left: 790px;
             position: relative;
             top: 140px;
             z-index: 200 !important;
-    }
 
+    }
 
     .slider-pager .slider-pager-page {
     color:#fff;
