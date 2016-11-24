@@ -6,11 +6,13 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
+    vm.smileyImages=["img/happy.png","img/middle.png","img/sad.png"]
     vm.data.imgArray=[];
     vm.imageDescription = [];
     vm.videoPath = [];
     var imageModalTimer;
     var videoModalTimer;
+     vm.selectIdx = -1;
      vm.happy = 1;
     vm.middle = 1;
     vm.sad = 1;
@@ -24,6 +26,16 @@ angular.module('dweUser', ['ionic', 'ui.router'])
             pageination:true
         };
     };
+
+    vm.selectImage = function ( $index ) {
+        console.log('inside');
+      if(vm.selectIdx === $index) {
+         vm.selectIdx = -1;
+      } else {
+          console.log('index',$index);
+          vm.selectIdx = $index;
+      }
+    }
         
     setupSlider();
 

@@ -38,17 +38,21 @@
                             <div class="form-spacing">
                             <div class="smiley-div">
 
-                            <img src="img/happy.png"   height="50px" width="50px" ng-click="uv.happySelect()" ng-show="uv.happy">
-                            <img class="smiley-margin"   src="img/middle.jpg" height="50px" width="50px" ng-click="uv.middleSelect()" ng-show="uv.middle">
-                            <img src="img/sad.jpg" height="50px" width="50px" ng-click="uv.sadSelect()" ng-show="uv.sad" >
-                            
+                          <!--   <img src="img/happy.png"   height="50px" width="50px" ng-click="uv.happySelect()" >
+                            <img class="smiley-margin"   src="img/middle.png" height="50px" width="50px" ng-click="uv.middleSelect()" >
+                            <img src="img/sad.png" height="50px" width="50px" ng-click="uv.sadSelect()" > -->
+                            <div ng-repeat="image in uv.smileyImages">
+                            <img class="smiley-img" ng-src={{image}} ng-click="uv.selectImage($index)" ng-class="{ 'selected-image': $index === uv.selectIdx }" >
+                            </div>
+
                             </div>
 
                             </div>
                             
                             </div>
                             
-                            
+                            <br />
+                            <br />
                             <input  type = "submit" value="Submit">                     
                         </form>
                     </div>
