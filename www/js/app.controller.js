@@ -12,10 +12,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.videoPath = [];
     var imageModalTimer;
     var videoModalTimer;
-     vm.selectIdx = -1;
-     vm.happy = 1;
-    vm.middle = 1;
-    vm.sad = 1;
+    vm.selectedEmotion = -1;
     vm.demoId = appConstants.demoId;
     var setupSlider = function() {
         vm.data.sliderOptions = {
@@ -29,12 +26,12 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     vm.selectImage = function ( $index ) {
         console.log('inside');
-      if(vm.selectIdx === $index) {
-         vm.selectIdx = $index;
+      if(vm.selectedEmotion === $index) {
+         vm.selectedEmotion = $index;
          console.log($index);
       } else {
           console.log('index',$index);
-          vm.selectIdx = $index;
+          vm.selectedEmotion = $index;
       }
     }
         
@@ -115,25 +112,43 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         vm.feedbackUserName = '';
         vm.feedbackUserEmail = '';
         vm.feedbackUserComments = '';
-        vm.happy = 1;
-        vm.middle = 1;
-        vm.sad = 1;
+        vm.selectedEmotion = -1;
     };
 
     //function to hide the Feedback Modal
     vm.closeModalFeedback = function() {
+        console.log('closing modal');
         $scope.modal3.hide();
-    }   
+    };   
 
     //function to execute when Feedback is submitted
     vm.submitFeedback = function() {
-        $http.post(appConstants.url + '/api/feedbacks', {demoId: vm.demoId, userName: vm.feedbackUserName, email: vm.feedbackUserEmail, comments: vm.feedbackUserComments }).success(function(res){
+        var emotion;
+        if (vm.selectedEmotion === 0) {
+            emotion = 'Happy';
+        }
+
+        if( vm.selectedEmotion === 1) {
+            emotion = 'Neutral';
+        }
+
+        if ( vm.selectedEmotion === 2 ) {
+            emotion = "Sad";
+        }
+        
+
+        $http.post(appConstants.url + '/api/feedbacks', {demoId: vm.demoId, userName: vm.feedbackUserName, email: vm.feedbackUserEmail, experience: emotion ,comments: vm.feedbackUserComments }).success(function(res){
                 var alertPopup = $ionicPopup.alert({
                     title: 'Thank-you',
                     template: 'Response recorded Successfully !!'
                 });
+
+                alertPopup.then(function(res) {
+                   vm.closeModalFeedback();
+                   
+                });
         });
-        vm.closeModalFeedback();
+        
     };
 
     $scope.openModalVideo = function(index) {
