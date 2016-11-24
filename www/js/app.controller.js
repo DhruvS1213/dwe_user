@@ -30,7 +30,8 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.selectImage = function ( $index ) {
         console.log('inside');
       if(vm.selectIdx === $index) {
-         vm.selectIdx = -1;
+         vm.selectIdx = $index;
+         console.log($index);
       } else {
           console.log('index',$index);
           vm.selectIdx = $index;
