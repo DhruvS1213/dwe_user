@@ -11,6 +11,9 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.videoPath = [];
     var imageModalTimer;
     var videoModalTimer;
+     vm.happy = 1;
+    vm.middle = 1;
+    vm.sad = 1;
     vm.demoId = appConstants.demoId;
     var setupSlider = function() {
         vm.data.sliderOptions = {
@@ -99,6 +102,9 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         vm.feedbackUserName = '';
         vm.feedbackUserEmail = '';
         vm.feedbackUserComments = '';
+        vm.happy = 1;
+        vm.middle = 1;
+        vm.sad = 1;
     };
 
     //function to hide the Feedback Modal
@@ -156,6 +162,33 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     };
  
     
+//Smiley Functions
+
+vm.happySelect=function(){
+    console.log('happy');
+    vm.happy=1;
+    vm.middle=0;
+    vm.sad=0;
+}
+
+vm.middleSelect=function(){
+    console.log('middle');
+    vm.happy=0;
+    vm.middle=1;
+    vm.sad=0;
+
+}
+
+vm.sadSelect=function(){
+    console.log('sad');
+    vm.happy=0;
+    vm.middle=0;
+    vm.sad=1;
+
+}
+
+
+
     vm.myInterval = 3000;
     
     $http({

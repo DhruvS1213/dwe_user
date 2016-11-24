@@ -29,15 +29,19 @@
                             <textarea ng-model="uv.feedbackUserComments" class="comment-wrapper" rows="4" cols="50" required>
                             </textarea>
                             </div>
-                            <div class="form-spacing">
+
+                         
                             <label class="label-text">
                             How was your experience?
                             </label>
                             <br>
+                            <div class="form-spacing">
                             <div class="smiley-div">
-                            <img src="img/happy.png" height="50px" width="50px">
-                            <img class="smiley-margin" src="img/middle.jpg" height="50px" width="50px">
-                            <img src="img/sad.jpg" height="50px" width="50px">
+
+                            <img src="img/happy.png"   height="50px" width="50px" ng-click="uv.happySelect()" ng-show="uv.happy">
+                            <img class="smiley-margin"   src="img/middle.jpg" height="50px" width="50px" ng-click="uv.middleSelect()" ng-show="uv.middle">
+                            <img src="img/sad.jpg" height="50px" width="50px" ng-click="uv.sadSelect()" ng-show="uv.sad" >
+                            
                             </div>
 
                             </div>
