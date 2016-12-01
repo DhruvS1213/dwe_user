@@ -1,4 +1,8 @@
+@font-face{font-family:ericsson_capital_ttregular;src:url(/fonts/ericssoncapitaltt-webfont.woff)}
 
+.eEricssonFont {
+    font-family: ericsson_capital_ttregular,Arial,sans-serif;
+}
 /* Landscape */
 @media only screen 
   and (min-device-width: 800px) 
@@ -203,10 +207,11 @@ color:#fff;
 
 .modal-imageContent{
 
-    height: 345px;
-    width: 460px;
+  height: 345px;
+    width: 425px;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
+    float: left;
 }
 
 .modal-textContent{    
@@ -216,10 +221,183 @@ color:#fff;
     height: 345px;
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
+    padding: 10px;
+    text-align: justify;
 }
 
 
+.feedback-wrapper{
+     float: right;
+    position: fixed;
+    top: 80px;
+    left: 770px;
+    font-size: 18px;
+    color: #193066;
+    }
 
+
+    .feedback-modal{
+
+  width: 70%;
+    background-color: white;
+    height: 570px;
+    align-content: center;
+    left: 16%;
+    position: relative;
+    z-index: 50;
+    top: -80px;
+    }
+
+    .form-div{
+        position: relative;
+        left: 70px;
+        top: 40px;
+    }
+
+.feedback-button{
+
+      position: relative;
+    left: 740px;
+    z-index: 200;
+    top: 20px;
+}
+    input[type="text"]{
+
+        height: 45px;
+        border-style: solid;
+        border-width: 0.1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .form-spacing{
+        padding-top: 8px !important;
+        padding-bottom: 15px !important;
+    }
+
+
+    .label-text{
+    font-size: 16px;
+    }
+
+
+    input[type="email"]{
+
+        height: 45px;
+        border-style: solid;
+        border-width: 0.1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .comment-wrapper{
+        height: 100px;
+        border-style: solid;
+        border-width: 0.1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    input[type="text"]{
+
+        height: 45px;
+        border-style: solid;
+        border-width: 0.1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .form-spacing{
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+
+    .label-text{
+    font-size: 16px;
+    }
+
+
+    input[type="email"]{
+
+        height: 45px;
+        border-style: solid;
+        border-width: 0.1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .comment-wrapper{
+        height: 100px;
+        border-style: solid;
+        border-width: 0.1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    /*.button-style{
+        color: white;
+        background-color: #002661;
+        font-size: 18px;
+        width: 450px;
+        height: 45px;
+        border: none;
+        border-radius: 4px;
+        left: 90px;
+        position: relative;
+        top: 35px;
+    }*/
+
+    input[type="submit"]{
+          color: white;
+        background-color: #002661;
+        font-size: 18px;
+        width: 450px;
+        height: 45px;
+        border: none;
+        border-radius: 4px;
+        left: 90px;
+        position: relative;
+        top: 35px;
+    }
+
+.smiley-margin{
+margin-left: 20px;
+    margin-right: 20px
+
+}
+
+.smiley-div{
+
+    padding-top: 8px;
+    padding-bottom: 15px;
+}
+
+.selected-image {
+
+  border: 1px solid black;
+}
+
+.smiley-img
+{
+    float: left;
+    margin-left: 8px;
+    height: 40px;
+    width: 40px;
+ 
+} 
 }
 
 

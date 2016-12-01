@@ -227,18 +227,17 @@ color:#fff;
     color: #193066;
 }
 
+  .feedback-modal{
 
-.feedback-modal{
-
-    width: 100%;
+ 
     background-color: white;
-    height: 500px;
+    height: 640px;
     align-content: center;
     position: relative;
     z-index: 50;
-    top: -30px;
+    top: -50px;
 
-}
+    }
 
 .form-div{
       position: relative;
@@ -302,6 +301,30 @@ input[type="submit"]{
         top: 35px;
     }
 
+.smiley-margin{
+margin-left: 20px;
+    margin-right: 20px
 
+}
+
+.smiley-div{
+
+    padding-top: 8px;
+    padding-bottom: 15px;
+}
+
+.selected-image {
+
+  border: 1px solid black;
+}
+
+.smiley-img
+{
+    float: left;
+    margin-left: 8px;
+    height: 40px;
+    width: 40px;
+ 
+}  
 
 }
