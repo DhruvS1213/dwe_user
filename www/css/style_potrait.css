@@ -1,6 +1,6 @@
 @media only screen 
-  and (min-device-width: 768px) 
-  and (max-device-width: 1024px) 
+  and (min-device-width: 600px) 
+  and (max-device-width: 960px) 
   and (orientation: portrait) 
   and (-webkit-min-device-pixel-ratio: 1) {
 
@@ -12,7 +12,7 @@
 
 .heading-wrapper {
     padding-top: 20px;
-    padding-left: 30px;
+   /* padding-left: 30px;*/
 }
 
 .heading-content {
@@ -21,18 +21,18 @@
 }
 
 .text-wrapper {
-    width: 570px;
+   width: 540px;
     padding-top: 20px;
-    padding-left: 30px;
+    /* padding-left: 30px; */
     text-align: justify;
     position: relative;
 
 }
 
 .img-wrapper {
-    width: 570px;
+    width: 540px;
     padding-top: 20px;
-    padding-left: 20px;
+    /* padding-left: 20px; */
     position: relative;
     height: 150px;
 }
@@ -68,6 +68,7 @@
   right: 0;
   top: 0;
 }
+
 .slider {
   width: 100%;
   height: 100%;
@@ -106,7 +107,7 @@
 
 .modal-div{
 
-    top: 220px;
+    top: 120px;
     position: relative;
     padding-left: 55px;
     padding-right: 55px;
@@ -114,11 +115,11 @@
 }
 
 .video-position{
-    left: 60px;
-    top: 670px;
+
+    top: 630px;
     position: fixed;
-    height: 250px;
-    width: 550px;
+    height: 249px;
+    width: 540px;
 }
 
 .triangle-bottomright {
@@ -136,13 +137,13 @@
    position: absolute !important;
     margin-top: 550px;
     z-index: 3;
-    margin-left: -390px;
+        margin-left: -492px;
 }
 
 .slider-pager 
 {
  color: #fff;
- top:710px !important;
+ top:610px !important;
 }
 
 .slider-pager-page.active
@@ -152,16 +153,16 @@ color: #f90;
 
 
 .feedback-button{
-    left: 660px;
+  left: 495px;
     position: fixed;
-    top: 200px;
+    top: 130px;
     z-index: 200 !important;
 }
 
 .button-position{
-left: 680px;
+    left: 530px;
     position: relative;
-    top: 140px;
+    top: 100px;
     z-index: 20 !important;
 }
 
@@ -219,10 +220,10 @@ color:#fff;
 }
 
 .feedback-wrapper{
-    float: right;
+       float: right;
     position: fixed;
-    top: 630px;
-    left: 70px;
+    top: 600px;
+    left: 40px;
     font-size: 18px;
     color: #193066;
 }
@@ -235,13 +236,14 @@ color:#fff;
     align-content: center;
     position: relative;
     z-index: 50;
-    top: -50px;
+ 
+    border-radius: 5px;
 
-    }
+}
 
 .form-div{
       position: relative;
-    left: 90px;
+     left: 18px;
     top: 40px;
 }
 
@@ -296,7 +298,7 @@ input[type="submit"]{
         height: 45px;
         border: none;
         border-radius: 4px;
-        left: 90px;
+        left: 18px;
         position: relative;
         top: 35px;
     }

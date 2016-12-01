@@ -246,6 +246,7 @@ color:#fff;
     position: relative;
     z-index: 50;
     top: -80px;
+    border-radius: 5px;
     }
 
     .form-div{
