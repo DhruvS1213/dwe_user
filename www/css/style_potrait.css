@@ -113,18 +113,6 @@
 
 }
 
-.modal-partition{
-    
-    width: 50%; 
-    float:left;
-
-}
-.img-description{
-    padding:20px;
-
-}
-
-
 .video-position{
     left: 60px;
     top: 670px;
@@ -163,10 +151,17 @@ color: #f90;
 }
 
 
-.button-position{
-    left: 700px;
+.feedback-button{
+    left: 660px;
     position: fixed;
-    top: 110px;
+    top: 200px;
+    z-index: 200 !important;
+}
+
+.button-position{
+left: 680px;
+    position: relative;
+    top: 140px;
     z-index: 20 !important;
 }
 
@@ -212,6 +207,100 @@ color:#fff;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
+
+
+.img-partition{
+  width: 50%; 
+  float:left;
+}
+
+.text-format{
+  padding:20px;
+}
+
+.feedback-wrapper{
+    float: right;
+    position: fixed;
+    top: 630px;
+    left: 70px;
+    font-size: 18px;
+    color: #193066;
+}
+
+
+.feedback-modal{
+
+    width: 100%;
+    background-color: white;
+    height: 500px;
+    align-content: center;
+    position: relative;
+    z-index: 50;
+    top: -30px;
+
+}
+
+.form-div{
+      position: relative;
+    left: 90px;
+    top: 40px;
+}
+
+input[type="text"]{
+
+      height: 45px;
+    border-style: solid;
+    border-width: 0.1px;
+    width: 450px;
+    border-color: grey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.form-spacing{
+      padding-top: 10px;
+    padding-bottom: 30px;
+}
+
+
+.label-text{
+  font-size: 16px;
+}
+
+
+input[type="email"]{
+
+      height: 45px;
+    border-style: solid;
+    border-width: 0.1px;
+    width: 450px;
+    border-color: grey;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.comment-wrapper{
+    height: 100px;
+    border-style: solid;
+    border-width: 0.1px;
+    width: 450px;
+    border-color: grey;
+    border-radius: 5px;
+    padding: 5px;
+}
+    
+input[type="submit"]{
+          color: white;
+        background-color: #002661;
+        font-size: 18px;
+        width: 450px;
+        height: 45px;
+        border: none;
+        border-radius: 4px;
+        left: 90px;
+        position: relative;
+        top: 35px;
+    }
 
 
 
