@@ -1,5 +1,5 @@
 /* Empty. Add your own CSS if you like */
-@font-face{font-family:ericsson_capital_ttregular;src:url(/fonts/ericssoncapitaltt-webfont.woff)}
+@font-face{font-family:ericsson_capital_ttregular;src:url(../fonts/ericssoncapitaltt-webfont.woff)}
 
 .eEricssonFont {
     font-family: ericsson_capital_ttregular,Arial,sans-serif;
@@ -160,7 +160,7 @@
     }
 
     .feedback-button{
-           left: 790px;
+           left: 740px;
             position: relative;
             top: 70px;
             z-index: 200 !important;
@@ -237,7 +237,7 @@
         left: 16%;
         position: relative;
         z-index: 50;
-        top: -100px;
+        top: -140px;
 
     }
 
@@ -248,16 +248,7 @@
     }
 
 
-    input[type="text"]{
 
-        height: 45px;
-        border-style: solid;
-        border-width: 0.1px;
-        width: 450px;
-        border-color: grey;
-        border-radius: 5px;
-        padding: 5px;
-    }
 
     .form-spacing{
         padding-top: 8px !important;
@@ -270,32 +261,12 @@
     }
 
 
-    input[type="email"]{
-
-        height: 45px;
-        border-style: solid;
-        border-width: 0.1px;
-        width: 450px;
-        border-color: grey;
-        border-radius: 5px;
-        padding: 5px;
-    }
-
-    .comment-wrapper{
-        height: 100px;
-        border-style: solid;
-        border-width: 0.1px;
-        width: 450px;
-        border-color: grey;
-        border-radius: 5px;
-        padding: 5px;
-    }
 
     input[type="text"]{
 
         height: 45px;
         border-style: solid;
-        border-width: 0.1px;
+        border-width: 1px;
         width: 450px;
         border-color: grey;
         border-radius: 5px;
@@ -317,7 +288,7 @@
 
         height: 45px;
         border-style: solid;
-        border-width: 0.1px;
+        border-width: 1px;
         width: 450px;
         border-color: grey;
         border-radius: 5px;
@@ -327,7 +298,7 @@
     .comment-wrapper{
         height: 100px;
         border-style: solid;
-        border-width: 0.1px;
+        border-width: 1px;
         width: 450px;
         border-color: grey;
         border-radius: 5px;
