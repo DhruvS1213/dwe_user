@@ -5,6 +5,7 @@ node_modules
 app/bower_components
 coverage
 platforms
+resources
 plugins
 *.swp
 *.swo
