@@ -357,6 +357,14 @@ margin-left: 20px;
  
 }  
 
+.feedback-position{
+        position: fixed;
+    top: 600px;
+    left: 40px;
+     font-size: 18px;
+    color: #193066;
+}
+
 }
 
 

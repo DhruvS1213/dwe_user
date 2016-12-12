@@ -104,7 +104,6 @@
   top:0px;
   left: 0px;
   border-radius: 10px;
-  background: transparent !important;
 }
 
 .modal-div{
@@ -399,6 +398,15 @@ margin-left: 20px;
     width: 40px;
  
 } 
+
+.feedback-position{
+        position: fixed;
+    top: 540px !important;
+    left: 40px;
+     font-size: 18px;
+    color: #193066;
+}
+
 }
 
 
