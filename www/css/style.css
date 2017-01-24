@@ -18,7 +18,7 @@
     }
 
     .heading-content {
-        font-size: 65px;
+        font-size: 55px;
         color: #00285F; 
     }
 
@@ -364,6 +364,30 @@ margin-left: 20px;
      font-size: 18px;
     color: #193066;
 }
+
+
+  .trouble-modal{
+
+    width: 70%;
+    background-color: white;
+    height: 400px;
+    align-content: center;
+    left: 16%;
+    position: relative;
+    z-index: 50;
+    top: -90px;
+    border-radius: 10px;
+
+    }
+
+
+    .trouble-button{
+        left: 730px;
+        position: relative;
+        top: 80px;
+        z-index: 200 !important;
+    }
+
 
 }
 
