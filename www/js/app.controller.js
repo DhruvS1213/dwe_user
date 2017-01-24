@@ -222,11 +222,27 @@ vm.sadSelect=function(){
         scope: $scope,
         animation: 'slide-in-up'
     });
- 
+
  $scope.openTroubleModal = function() {
         console.log('open');
         $scope.modal4.show();
        
+    };
+
+
+    vm.submittroubleTicket = function() {
+        
+        $http.post(appConstants.url + '/api/troubleTickets', {demoId: vm.demoId, userName: vm.troubleTicketUserName ,comments: vm.troubleTicketUserComments }).success(function(res){
+                var alertPopup = $ionicPopup.alert({
+                    title: 'Thank-you',
+                    template: 'Response recorded Successfully !!'
+                });
+
+                alertPopup.then(function(res) {
+                   vm.closeModalTrouble();
+                   
+                });
+        });
     };
 
     //Close trouble modal

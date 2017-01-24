@@ -121,6 +121,9 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         });
     };
 
+
+
+
     //Trouble Modal open
     $scope.openTroubleModal = function() {
         console.log('open');
@@ -132,6 +135,12 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.closeModalTrouble = function() {
         $scope.modal4.hide();
     } 
+
+    vm.submittroubleTicket = function() {
+        $http.post('http://localhost:9000/api/troubleTickets', {demoId: demoId, userName: vm.troubleTicketUserName, comments: vm.troubleTicketUserComments }).success(function(res){
+                alert("Ticket Recorded Successfully");
+        });
+    };
 
     $scope.openModalVideo = function(index) {
         $scope.modal2.show();
@@ -222,6 +231,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         url: 'http://localhost:9000/api/contents/'+ appConstants.demoId
     }).then(function successCallback(resp)
     {
+        console.log(resp);
         var contents = resp.data;
         console.log('response');
         console.log(resp.data);
