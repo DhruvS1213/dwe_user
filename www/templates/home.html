@@ -32,5 +32,9 @@
         <img class="img-content" ng-click="uv.goToSlide($index)" ng-src={{img}} >
         </ion-slide-page>
     </ion-slides>
+
+    <div ng-if="vm.data.imgArray > 0">
+        <p style="position: relative;left: 15%;"> Click each image to know further </p>
+    </div>
             
 </ion-view>
