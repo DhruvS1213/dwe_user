@@ -215,7 +215,24 @@ vm.sadSelect=function(){
 
 }
 
+//Trouble Modal
+ $ionicModal.fromTemplateUrl('templates/modalTrouble.html', function($ionicModal) {
+        $scope.modal4 = $ionicModal;
+    }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+    });
+ 
+ $scope.openTroubleModal = function() {
+        console.log('open');
+        $scope.modal4.show();
+       
+    };
 
+    //Close trouble modal
+vm.closeModalTrouble = function() {
+        $scope.modal4.hide();
+    } 
 
     vm.myInterval = 3000;
     

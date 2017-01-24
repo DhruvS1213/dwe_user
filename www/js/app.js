@@ -48,6 +48,13 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         animation: 'slide-in-up'
     });
     
+    $ionicModal.fromTemplateUrl('templates/modalTrouble.html', function($ionicModal) {
+        $scope.modal4 = $ionicModal;
+    }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+    });
+
     vm.startImageTimer = function(){
        imageModalTimer =  $timeout(function () {
             vm.closeModal();
@@ -101,6 +108,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         vm.feedbackUserComments = '';
     };
 
+ 
     //function to hide the Feedback Modal
     vm.closeModalFeedback = function() {
         $scope.modal3.hide();
@@ -112,6 +120,18 @@ angular.module('dweUser', ['ionic', 'ui.router'])
                 alert("Feedback Recorded Successfully");
         });
     };
+
+    //Trouble Modal open
+    $scope.openTroubleModal = function() {
+        console.log('open');
+        $scope.modal4.show();
+       
+    };
+
+    //Close trouble modal
+    vm.closeModalTrouble = function() {
+        $scope.modal4.hide();
+    } 
 
     $scope.openModalVideo = function(index) {
         $scope.modal2.show();
