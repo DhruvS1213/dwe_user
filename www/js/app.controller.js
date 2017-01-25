@@ -9,6 +9,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.smileyImages=["img/happy.png","img/middle.png","img/sad.png"]
     vm.data.imgArray=[];
     vm.imageDescription = [];
+    vm.imageLabel = [];
     vm.videoPath = [];
     var imageModalTimer;
     var videoModalTimer;
@@ -282,6 +283,8 @@ vm.closeModalTrouble = function() {
                 vm.data.imgArray[i] =content.imageDetail[i].imagePath;
                 console.log(vm.data.imgArray);
                 vm.imageDescription[i] = content.imageDetail[i].imageDescription;
+                vm.imageLabel[i] = content.imageDetail[i].label;
+
             }
         }
 

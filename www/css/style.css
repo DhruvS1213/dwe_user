@@ -153,11 +153,11 @@
 
     .button-position{
 
-    left: 960px;
+/*    left: 960px;*/
     position: relative;
-    top: 60px;
+/*    top: 60px;*/
     z-index: 20 !important;
-    }
+}
 
     .feedback-button{
            left: 740px;
@@ -194,19 +194,21 @@
 
     .modal-imageContent{
 
-        height: 445px;
+        height: 400px;
         width: 460px;
         border-top-left-radius: 15px;
         border-bottom-left-radius: 15px;
+        margin-top: -20%;
     }
 
     .modal-textContent{    
         width: 50%;
         float: right;
         background-color: white;
-        height: 445px;
+        height: 400px;
         border-top-right-radius: 15px;
         border-bottom-right-radius: 15px;
+        margin-top: -10%;
     }
 
     .img-partition{
