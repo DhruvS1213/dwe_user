@@ -6,7 +6,8 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
-    vm.smileyImages=["img/happy.png","img/middle.png","img/sad.png"]
+    vm.smileyImages=["img/happy.png","img/middle.png","img/sad.png"];
+    vm.instructionImages=["img/instImage.jpg","img/img-3.jpg","img/img-4.jpg"];
     vm.data.imgArray=[];
     vm.imageDescription = [];
     vm.imageLabel = [];
@@ -15,6 +16,18 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     var videoModalTimer;
     vm.selectedEmotion = -1;
     vm.demoId = appConstants.demoId;
+    vm.instruction = [{
+        "path":"img/instImage.jpg",
+        "text":"Click on each image to know more about them, swipe through them to see more"
+    },
+    {   "path":"img/img-3.jpg",
+        "text":"Click on the video image to watch videos related to the demos, please swipe to watch more videos"
+    },
+    {
+        "path":"img/img-4.jpg",
+        "text":"Please provide the feedback by clicking on the link at the home page"
+    }]
+
     var setupSlider = function() {
         vm.data.sliderOptions = {
             initialSlide: 0,
@@ -24,6 +37,8 @@ angular.module('dweUser', ['ionic', 'ui.router'])
             pageination:true
         };
     };
+
+
 
     vm.selectImage = function ( $index ) {
         console.log('inside');
@@ -243,7 +258,9 @@ $scope.openTroubleModal = function() {
 
 $scope.openInstructModal = function() {
         console.log('open');
-        $scope.modal5.show();      
+        $scope.modal5.show();    
+        $ionicSlideBoxDelegate.$getByHandle('inst').slide(0);
+  
 };
 
 $scope.closeModalInstruct = function(){

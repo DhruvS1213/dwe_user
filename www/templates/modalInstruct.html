@@ -3,13 +3,22 @@
       <div class="inst-button">
             <img src="./img/close_icon.png" height="40px" width="40px" ng-click="closeModalInstruct()" >
         </div> 
+         <ion-slide-box delegate-handle="inst" active-slide="myActiveSlide">
+            
+          <ion-slide ng-repeat="img in uv.instruction track by $index" >
+           
            <div class="instModal">
-                  <img  style="width: 100%;height: 80%;" src="img/instImage.jpg" />
-            </div>
-            <div>
-                    <p class="inst-text"> Follow the instructions as shown in the image </p>
+            
+                    <img  style="width: 100%;height: 80%;" ng-src="{{img.path}}" />
+            
+                    <div style="    width: 100%;position: relative;top: 20px;">
+                            <p class="inst-text"> {{img.text}} </p>
+                    </div>
             </div>
 
+        </ion-slide>
+        </ion-slide-box>
        
     </div>
+
 </ion-modal-view>

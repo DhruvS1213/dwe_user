@@ -175,7 +175,7 @@
     }
 
     .active .modal-backdrop-bg {
-        opacity: .8;
+        opacity: .9;
     }
 
     .modal-backdrop-bg {
@@ -411,8 +411,10 @@ margin-left: 20px;
 
 .inst-text{
             position: relative;
-            top: -60px;
+          
             text-align: center;
+            padding-left: 2%;
+            padding-right: 2%;
 }
 
 }
