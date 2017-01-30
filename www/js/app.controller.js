@@ -62,6 +62,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         animation: 'slide-in-up'
     });
     
+
     vm.startImageTimer = function(){
        imageModalTimer =  $timeout(function () {
             vm.closeModal();
@@ -224,11 +225,31 @@ vm.sadSelect=function(){
         animation: 'slide-in-up'
     });
 
- $scope.openTroubleModal = function() {
+$scope.openTroubleModal = function() {
         console.log('open');
-        $scope.modal4.show();
-       
-    };
+        $scope.modal4.show();      
+};
+
+
+//Instruct Modal
+
+
+ $ionicModal.fromTemplateUrl('templates/modalInstruct.html', function($ionicModal) {
+        $scope.modal5 = $ionicModal;
+    }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+});
+
+$scope.openInstructModal = function() {
+        console.log('open');
+        $scope.modal5.show();      
+};
+
+$scope.closeModalInstruct = function(){
+        console.log('close');
+        $scope.modal5.hide();      
+}
 
 
     vm.submittroubleTicket = function() {
@@ -236,7 +257,7 @@ vm.sadSelect=function(){
         $http.post(appConstants.url + '/api/troubleTickets', {demoId: vm.demoId, userName: vm.troubleTicketUserName ,comments: vm.troubleTicketUserComments }).success(function(res){
                 var alertPopup = $ionicPopup.alert({
                     title: 'Thank-you',
-                    template: 'Response recorded Successfully !!'
+                    template: 'Ticket recorded Successfully !!'
                 });
 
                 alertPopup.then(function(res) {
