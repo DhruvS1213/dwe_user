@@ -260,16 +260,18 @@ $scope.openInstructModal = function() {
         console.log('open');
         $scope.modal5.show();    
         $ionicSlideBoxDelegate.$getByHandle('inst').slide(0);
+        $scope.modal.hide();
   
 };
 
 $scope.closeModalInstruct = function(){
         console.log('close');
-        $scope.modal5.hide();      
+        $scope.modal5.hide();
+        $scope.modal.show();      
 }
 
 
-    vm.submittroubleTicket = function() {
+vm.submittroubleTicket = function() {
         
         $http.post(appConstants.url + '/api/troubleTickets', {demoId: vm.demoId, userName: vm.troubleTicketUserName ,comments: vm.troubleTicketUserComments }).success(function(res){
                 var alertPopup = $ionicPopup.alert({

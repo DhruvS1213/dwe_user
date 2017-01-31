@@ -18,8 +18,9 @@
         <p class="feedback-position" style="top:500px !important;">Trouble Ticket</p>
     </div>
 
-    <div ng-if="uv.videoPath.length > 0">
-        <img class="video-position" src="./img/play_video.png" ng-click="openModalVideo(0); uv.startVideoTimer()">
+    <div ng-if="uv.videoPath.length > 0"><!-- 
+        <img class="video-position" src="./img/play_video.png" ng-click="openModalVideo(0); uv.startVideoTimer()"> -->
+        <video class="video-position" ng-src="{{uv.videoPath[0]}}" height="100px" width="100px" ng-click="openModalVideo(0);uv.startVideoTimer()" />
         <!--<button ng-click="vm.displayVideo()"><img src="/img/play-button.png"></button>-->
     </div> 
 

@@ -118,8 +118,8 @@
     }
 
     .video-position{
-        left: 660px;
-        top: 160px;
+        top: 10%;
+        width: 34%;
         position: fixed;
     }
 
