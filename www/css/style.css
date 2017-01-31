@@ -117,6 +117,14 @@
         padding-right: 55px;
     }
 
+    .modalVideo-div{
+
+        top: 100px;
+        position: relative;
+        padding-left: 55px;
+        padding-right: 55px;
+    }
+
     .video-position{
         top: 10%;
         width: 34%;

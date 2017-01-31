@@ -258,16 +258,20 @@ $scope.openTroubleModal = function() {
 
 $scope.openInstructModal = function() {
         console.log('open');
+          vm.startImageTimer();
         $scope.modal5.show();    
         $ionicSlideBoxDelegate.$getByHandle('inst').slide(0);
         $scope.modal.hide();
+        
   
 };
 
 $scope.closeModalInstruct = function(){
         console.log('close');
+          vm.startImageTimer();
         $scope.modal5.hide();
-        $scope.modal.show();      
+        $scope.modal.show();  
+         
 }
 
 
