@@ -4,7 +4,7 @@
             <img src="./img/btn_close.png" height="40px" width="40px" ng-click="uv.closeModalFeedback()">
         </div> 
            <div class="modal-div">
-                    <div class="feedback-modal">
+                    <div class="feedback-modal" style="overflow-y: scroll !important;z-index: 0 !important">
                         <form name="feedbackForm" ng-submit="uv.submitFeedback()">
                        
                             <div class="form-div">
@@ -54,6 +54,26 @@
                             <br />
                             <input  type = "submit" value="Submit" ng-disabled="uv.selectedEmotion === -1">                     
                         </form>
+                         <hr />
+                     <p style="font-size: 24px;
+    color: #193066;
+    font-weight: bold;
+    text-align: center;"> Feedbacks </p>
+                    
+
+                    <div style="margin-top: 2%;margin-left: 5%;">
+
+                         <div ng-repeat="feed in uv.feedbackObjectDisplay track by $index">
+
+                          <div class="feedbackLabelText">Name : <span class="feedbackText">{{feed.userName}}</span></div>
+                          <div class="feedbackLabelText">Email :<span class="feedbackText"> {{feed.email}} </span></div>
+                          <div class="feedbackLabelText">Experience :<span class="feedbackText"> {{feed.experience}} </span></div>
+                          <div class="feedbackLabelText">Comments : <span class="feedbackText">{{feed.comments}} </span></div>
+                          <hr />
+
+                        </div>
+                    </div>
+
                     </div>
             </div>
 

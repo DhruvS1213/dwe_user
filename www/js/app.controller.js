@@ -12,6 +12,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.imageDescription = [];
     vm.imageLabel = [];
     vm.videoPath = [];
+    vm.feedbackObjectDisplay = {};
     var imageModalTimer;
     var videoModalTimer;
     vm.selectedEmotion = -1;
@@ -351,7 +352,28 @@ vm.closeModalTrouble = function() {
         });
 
 
+   $http({
+        method: 'GET',
+        url: appConstants.url + '/api/feedbacks' 
+    }).then(function successCallback(resp)
+    {
+        content = resp.data;
+        for(var i=0;i<content.length;i++)
+       {
 
+            if(content[i].demoId == appConstants.demoId)
+            {
+            vm.feedbackObjectDisplay[i] = content[i];
+            }
+       }
+
+        console.log('inside get content for feedback',vm.feedbackObjectDisplay);
+    
+       
+    }, function errorCallback(response)
+        {
+            console.log('error');
+        });
 
 }])
 

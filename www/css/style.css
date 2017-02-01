@@ -101,10 +101,8 @@
     height: 560px;
     top:130px;
     left:60px;*/
+
     width:100% !important;
-    height: 100% !important;
-    top:0px;
-    left: 0px;
     border-radius: 10px;
     background: transparent !important;
     }
@@ -248,7 +246,6 @@
         align-content: center;
         left: 16%;
         position: relative;
-        z-index: 50;
         top: -140px;
 
     }
@@ -340,7 +337,6 @@
         border-radius: 4px;
         left: 90px;
         position: relative;
-        top: 35px;
     }
 
 .smiley-margin{
@@ -423,6 +419,18 @@ margin-left: 20px;
             text-align: center;
             padding-left: 2%;
             padding-right: 2%;
+}
+
+
+.feedbackLabelText{
+        font-weight: bold;
+
+    font-size: 15px;
+
+}
+
+.feedbackText{
+    font-weight: normal !important
 }
 
 }

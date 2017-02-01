@@ -243,7 +243,6 @@ color:#fff;
     align-content: center;
     left: 16%;
     position: relative;
-    z-index: 50;
     top: -80px;
     border-radius: 5px;
     }
@@ -370,7 +369,6 @@ color:#fff;
         border-radius: 4px;
         left: 90px;
         position: relative;
-        top: 35px;
     }
 
 .smiley-margin{
