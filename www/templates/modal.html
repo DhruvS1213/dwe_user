@@ -14,7 +14,7 @@
                     <div class="modal-textContent">
                         <p class="text-format"> {{uv.imageDescription[$index]}}</p>
                     </div>
-                    <div ng-click="openInstructModal()">
+                    <div ng-click="openInstructModal($index)" ng-if = "uv.instructions[$index].length">
                         <p style="position: absolute;top: 280px;color: blue;left: 75%;z-index: 5">Click here for instructions</p>
                     </div>
 

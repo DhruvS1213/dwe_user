@@ -4,71 +4,58 @@
             <img src="./img/btn_close.png" height="40px" width="40px" ng-click="uv.closeModalFeedback()">
         </div> 
            <div class="modal-div">
-                    <div class="feedback-modal" style="overflow-y: scroll !important;z-index: 0 !important">
+                    <div class="feedback-modal" style="overflow: scroll !important;z-index: 0 !important">
                         <form name="feedbackForm" ng-submit="uv.submitFeedback()">
                        
                             <div class="form-div">
-                         
+                                
                                 <label class="label-text">
-                                    Enter Your Name*
+                                How was your experience?*
                                 </label>
-                            <div class="form-spacing">
-                                <input ng-model="uv.feedbackUserName" type="text" name="" required >
-                            </div>
-                            <label class="label-text">
-                                Email Address*
-                            </label>
-
-                            <div class="form-spacing">
-                            <input ng-model="uv.feedbackUserEmail" type="email" required >
-                            </div>
-
-                            <label class="label-text">
-                            How was your experience?*
-                            </label>
-                            <br>
-                            <div class="form-spacing">
-                                <div class="smiley-div">
-                                    <div ng-repeat="image in uv.smileyImages">
-                                        <img class="smiley-img" ng-src={{image}} ng-click="uv.selectImage($index)" ng-class="{ 'selected-image': $index === uv.selectedEmotion }" >
+                                <br>
+                                <div class="form-spacing">
+                                    <div class="smiley-div">
+                                        <div ng-repeat="image in uv.smileyImages">
+                                            <img class="smiley-img" ng-src={{image}} ng-click="uv.selectImage($index);showDiv=1;" ng-class="{ 'selected-image': $index === uv.selectedEmotion }" >
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <br />
+                                <br />
+                                <div ng-if="uv.showDiv == 1">
+                                    <p class="label-text">Are you providing feedback on:</p>
+                                        <select ng-model="uv.feedbackChoice" ng-options="choice as choice.name for choice in uv.feedbackDropdown" ng-change="uv.selectOption()"></select>
 
+                                        <div ng-if="uv.showFunctionDiv == 1">
+                                            <br />
+                                            <p class="label-text"> Select the Functionality </p>
+                                            <select ng-model="uv.functionalityType" ng-options="func as func.name for func in uv.functionality" ></select>   
+                                        </div>
 
-                            <label class="label-text">
-                                Comments (optional)
-                            </label>
-                            <div class="form-spacing">
-                            <textarea ng-model="uv.feedbackUserComments" class="comment-wrapper" rows="4" cols="50">
-                            </textarea>
-                            </div>
+                                </div>
 
-                         
-                            
-                            
+                                <label class="label-text">
+                                    Comments (optional)
+                                </label>
+                                <div class="form-spacing">
+                                <textarea ng-model="uv.feedbackUserComments" class="comment-wrapper" rows="4" cols="50">
+                                </textarea>
+                                </div>
+                                                        
                             </div>
                             
                             <br />
                             <br />
                             <input  type = "submit" value="Submit" ng-disabled="uv.selectedEmotion === -1">                     
                         </form>
-                         <hr />
-                     <p style="font-size: 24px;
-    color: #193066;
-    font-weight: bold;
-    text-align: center;"> Feedbacks </p>
+                     <br />
+                     <p style="font-size: 24px;color: #193066;font-weight: bold;text-align: center;"> Feedback </p>
                     
-
                     <div style="margin-top: 2%;margin-left: 5%;">
 
                          <div ng-repeat="feed in uv.feedbackObjectDisplay track by $index">
-
-                          <div class="feedbackLabelText">Name : <span class="feedbackText">{{feed.userName}}</span></div>
-                          <div class="feedbackLabelText">Email :<span class="feedbackText"> {{feed.email}} </span></div>
                           <div class="feedbackLabelText">Experience :<span class="feedbackText"> {{feed.experience}} </span></div>
                           <div class="feedbackLabelText">Comments : <span class="feedbackText">{{feed.comments}} </span></div>
+                         <div class="feedbackLabelText">Date and Time : <span class="feedbackText">{{feed.dateTime}} </span></div>
                           <hr />
 
                         </div>

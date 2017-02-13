@@ -7,7 +7,6 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
     vm.smileyImages=["img/happy.png","img/middle.png","img/sad.png"];
-    vm.instructionImages=["img/instImage.jpg","img/img-3.jpg","img/img-4.jpg"];
     vm.data.imgArray=[];
     vm.imageDescription = [];
     vm.imageLabel = [];
@@ -17,18 +16,57 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     var videoModalTimer;
     vm.selectedEmotion = -1;
     vm.demoId = appConstants.demoId;
-    vm.instruction = [{
-        "path":"img/instImage.jpg",
-        "text":"Click on each image to know more about them, swipe through them to see more"
-    },
-    {   "path":"img/img-3.jpg",
-        "text":"Click on the video image to watch videos related to the demos, please swipe to watch more videos"
+    vm.instructions = [];
+    vm.instructionImages = [];
+    vm.instructionDescription = [];
+    vm.showDiv = 0;
+    vm.showFunctionDiv = 0;
+    vm.showOther = 0;
+    vm.funcTrouble = 0;
+    var sysDate = new Date().toLocaleString(); 
+    vm.feedbackDropdown=[
+    {
+        "id" : 1,
+        "name" : "The overall solution"
     },
     {
-        "path":"img/img-4.jpg",
-        "text":"Please provide the feedback by clicking on the link at the home page"
-    }]
+        "id" : 2,
+        "name" : "A specific functionality"
+    },
+    {
+        "id" : 3,
+        "name" : "Both"
+    }
+    ];
+    vm.functionality = [
+    {
+        "id" : 1,
+        "name" : "User Experience"
+    },
+    {
+        "id" : 2,
+        "name" : "User Interface"
+    }
 
+    ];
+    vm.trouble = [
+    {
+        "id":1,
+        "name":"Overall Solution not working"
+    },
+    {
+        "id":2,
+        "name":"Specific functionality not working"
+    },
+    {
+        "id":3,
+        "name":"App not working"
+    },
+    {
+        "id":4,
+        "name":"Other"
+    }
+    ]
     var setupSlider = function() {
         vm.data.sliderOptions = {
             initialSlide: 0,
@@ -39,10 +77,14 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         };
     };
 
+    vm.htmlToPlaintext = function( text ) {
+        return text ? String( text ).replace( /<[^>]+>/gm, '' ) : '';
+    }
 
 
     vm.selectImage = function ( $index ) {
         console.log('inside');
+        vm.showDiv = 1;
       if(vm.selectedEmotion === $index) {
          vm.selectedEmotion = $index;
          console.log($index);
@@ -126,11 +168,16 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     //function to open Feedback Modal
     $scope.openFeedbackModal = function() {
+        vm.feedbackChoice='';
+        vm.functionalityType='';
         $scope.modal3.show();
         vm.feedbackUserName = '';
         vm.feedbackUserEmail = '';
         vm.feedbackUserComments = '';
         vm.selectedEmotion = -1;
+        vm.showDiv = 0;
+        vm.showFunctionDiv = 0;
+
     };
 
     //function to hide the Feedback Modal
@@ -154,8 +201,9 @@ angular.module('dweUser', ['ionic', 'ui.router'])
             emotion = "Sad";
         }
         
+        
 
-        $http.post(appConstants.url + '/api/feedbacks', {demoId: vm.demoId, userName: vm.feedbackUserName, email: vm.feedbackUserEmail, experience: emotion ,comments: vm.feedbackUserComments }).success(function(res){
+        $http.post(appConstants.url + '/api/feedbacks', {demoId: vm.demoId, feedbackType: vm.feedbackChoice.name, functionality: vm.functionalityType.name, experience: emotion ,comments: vm.feedbackUserComments, dateTime : sysDate }).success(function(res){
                 var alertPopup = $ionicPopup.alert({
                     title: 'Thank-you',
                     template: 'Response recorded Successfully !!'
@@ -168,6 +216,46 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         });
         
     };
+
+
+    vm.selectOption = function(){
+        
+        if (vm.feedbackChoice.id == 2 || vm.feedbackChoice.id == 3)
+        {
+            vm.showFunctionDiv = 1;
+        }
+        else
+        {
+            vm.showFunctionDiv = 0;
+        }
+
+    }
+
+
+    vm.selectIssue = function () {
+
+        if(vm.troubleChoice.id == 2)
+        {
+            vm.funcTrouble = 1;
+            vm.showOther=0;
+        }
+        else if (vm.troubleChoice.id == 4)
+        {
+            vm.showOther = 1;
+            vm.funcTrouble = 0;
+
+        }
+        else{
+             vm.showOther = 0;
+            vm.funcTrouble = 0;
+        }
+
+
+    }
+
+    vm.selectTrouble = function(){
+        console.log('Trouble Issue',vm.troubleFunctionality);
+    }
 
     $scope.openModalVideo = function(index) {
         $scope.modal2.show();
@@ -243,6 +331,10 @@ vm.sadSelect=function(){
 
 $scope.openTroubleModal = function() {
         console.log('open');
+        vm.showOther = 0;
+        vm.funcTrouble = 0;
+        vm.troubleChoice='';
+        vm.troubleFunctionality = '';
         $scope.modal4.show();      
 };
 
@@ -257,9 +349,16 @@ $scope.openTroubleModal = function() {
         animation: 'slide-in-up'
 });
 
-$scope.openInstructModal = function() {
+$scope.openInstructModal = function(index) {
+        console.log(vm.instructions);
+        for(var i=0;i<vm.instructions[index].length;i++){
+            console.log(vm.instructions[index][i].subImgPath);
+            vm.instructionImages.push(vm.instructions[index][i].subImgPath);
+            vm.instructionDescription.push(vm.instructions[index][i].subImageDescription);
+        }
+
         console.log('open');
-          vm.startImageTimer();
+        vm.startImageTimer();
         $scope.modal5.show();    
         $ionicSlideBoxDelegate.$getByHandle('inst').slide(0);
         $scope.modal.hide();
@@ -269,16 +368,18 @@ $scope.openInstructModal = function() {
 
 $scope.closeModalInstruct = function(){
         console.log('close');
-          vm.startImageTimer();
+        vm.startImageTimer();
         $scope.modal5.hide();
+        vm.instructionImages = [];
+        vm.instructionDescription = [];
         $scope.modal.show();  
          
 }
 
 
 vm.submittroubleTicket = function() {
-        
-        $http.post(appConstants.url + '/api/troubleTickets', {demoId: vm.demoId, userName: vm.troubleTicketUserName ,comments: vm.troubleTicketUserComments }).success(function(res){
+   
+        $http.post(appConstants.url + '/api/troubleTickets', {demoId: vm.demoId,issue: vm.troubleChoice.name, functionality : vm.troubleFunctionality.name ,comments: vm.troubleTicketUserComments , dateTime : sysDate }).success(function(res){
                 var alertPopup = $ionicPopup.alert({
                     title: 'Thank-you',
                     template: 'Ticket recorded Successfully !!'
@@ -309,7 +410,8 @@ vm.closeModalTrouble = function() {
             vm.userHeadingRequest = '';
         }
         else{
-            vm.userHeadingRequest = content.title;    
+            vm.userHeadingRequest = content.title; 
+            vm.TroubleHeading = vm.htmlToPlaintext(content.title); 
         }
 
         if(content.textContent === undefined){
@@ -329,6 +431,7 @@ vm.closeModalTrouble = function() {
                 console.log(vm.data.imgArray);
                 vm.imageDescription[i] = content.imageDetail[i].imageDescription;
                 vm.imageLabel[i] = content.imageDetail[i].label;
+                vm.instructions.push(content.imageDetail[i].subImages);
 
             }
         }
@@ -374,6 +477,30 @@ vm.closeModalTrouble = function() {
         {
             console.log('error');
         });
+
+     $http({
+        method: 'GET',
+        url: appConstants.url + '/api/feedbacks' 
+    }).then(function successCallback(resp)
+    {
+        content = resp.data;
+        for(var i=0;i<content.length;i++)
+       {
+
+            if(content[i].demoId == appConstants.demoId)
+            {
+            vm.feedbackObjectDisplay[i] = content[i];
+            }
+       }
+
+        console.log('inside get content for feedback',vm.feedbackObjectDisplay);
+    
+       
+    }, function errorCallback(response)
+        {
+            console.log('error');
+        });
+
 
 }])
 

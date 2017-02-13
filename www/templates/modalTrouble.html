@@ -6,30 +6,59 @@
            <div class="modal-div">
                     <div class="trouble-modal">
                         <form name="feedbackForm" ng-submit="uv.submittroubleTicket()">
-                       
-                            <div class="form-div">
-                         
-                            <label class="label-text">
-                                    Enter Your Name*
-                            </label>
-                            <div class="form-spacing">
-                                <input ng-model="uv.troubleTicketUserName" type="text" name="" required >
-                            </div>
-
-                            <br>
+                            
+                            <div class="form-div" style="padding-bottom: 2%;">
 
                             <label class="label-text">
-                                Please Specify your trouble
+                                    Name of the application
                             </label>
-                            <div class="form-spacing">
-                            <textarea ng-model="uv.troubleTicketUserComments" class="comment-wrapper" rows="4" cols="50">
-                            </textarea>
+                            <p style="font-size: 18px;padding: 1%;"> {{uv.TroubleHeading}}</p>
+
+
+                            <label class="label-text" style="padding-bottom: 1%;">
+                                    Select your issue
+                            </label>
+                            
+                          
+                             
+                             <select ng-model="uv.troubleChoice" ng-options="choice as choice.name for choice in uv.trouble" ng-change="uv.selectIssue()"></select>
+                             
+                             <br />
+
+                             <div ng-if="uv.funcTrouble == 1">
+                             <br />
+                             <label class="label-text" style="padding-bottom: 1%;">
+                                    Select your functionality
+                             </label>
+                                   <select ng-model="uv.troubleFunctionality" ng-options="choice as choice.name for choice in uv.functionality" ng-change="uv.selectTrouble()"></select>
+                           
+                            <br />
+                            <br />
+
+                             <label class="label-text">
+                                   Additional Comments (optional)
+                                </label>
+                                <div class="form-spacing">
+                                <textarea  ng-model="uv.troubleTicketUserComments" class="comment-wrapper" rows="4" cols="50">
+                                </textarea>
+                                </div>
+
+                             </div>
+
+                            <div ng-if="uv.showOther == 1">
+                                <label class="label-text">
+                                   Please specify what the issue is
+                                </label>
+                                <div class="form-spacing">
+                                <textarea ng-model="uv.troubleTicketUserComments" class="comment-wrapper" rows="4" cols="50">
+                                </textarea>
+                                </div>
                             </div>
 
                             </div>
                             
-                            <br />
-                            <br />
+                            <br >
+                            <br >
                             <input  type = "submit" value="Submit" >                     
                         </form>
                     </div>

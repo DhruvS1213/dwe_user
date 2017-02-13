@@ -267,6 +267,7 @@
 
     .label-text{
     font-size: 16px;
+    font-weight: bold;
     }
 
 
@@ -378,13 +379,14 @@ margin-left: 20px;
 
     width: 70%;
     background-color: white;
-    height: 400px;
+    height: 410px;
     align-content: center;
     left: 16%;
     position: relative;
     z-index: 50;
-    top: -90px;
+    top: -80px;
     border-radius: 10px;
+
 
     }
 
@@ -392,7 +394,7 @@ margin-left: 20px;
     .trouble-button{
         left: 730px;
         position: relative;
-        top: 80px;
+        top: 100px;      
         z-index: 200 !important;
     }
 

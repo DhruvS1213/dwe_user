@@ -5,14 +5,14 @@
         </div> 
          <ion-slide-box delegate-handle="inst" active-slide="myActiveSlide">
             
-          <ion-slide ng-repeat="img in uv.instruction track by $index" >
+          <ion-slide ng-repeat="img in uv.instructionImages track by $index" >
            
            <div class="instModal">
             
-                    <img  style="width: 100%;height: 80%;" ng-src="{{img.path}}" />
+                    <img  style="width: 100%;height: 80%;" ng-src="{{img}}" />
             
                     <div style="    width: 100%;position: relative;top: 20px;">
-                            <p class="inst-text"> {{img.text}} </p>
+                            <p class="inst-text"> {{uv.instructionDescription[$index]}} </p>
                     </div>
             </div>
 
