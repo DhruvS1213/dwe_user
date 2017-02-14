@@ -18,6 +18,11 @@
         <p class="feedback-position" style="top:500px !important;">Click here to submit a trouble ticket</p>
     </div>
 
+    <div>
+            <img class="play_button" src="img/youtube_play.png"  ng-click="openModalVideo(0);uv.startVideoTimer()"/>
+    </div>
+
+
     <div ng-if="uv.videoPath.length > 0"><!-- 
         <img class="video-position" src="./img/play_video.png" ng-click="openModalVideo(0); uv.startVideoTimer()"> -->
         <video class="video-position" ng-src="{{uv.videoPath[0]}}" height="100px" width="100px" ng-click="openModalVideo(0);uv.startVideoTimer()" />

@@ -435,6 +435,16 @@ margin-left: 20px;
     font-weight: normal !important
 }
 
+.play_button{
+    width: 9%;
+    position: absolute;
+    left: 75%;
+    z-index: 10;
+    opacity: 0.9;
+    top: 34%;
+
+}
+
 }
 
 

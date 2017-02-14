@@ -23,6 +23,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.showFunctionDiv = 0;
     vm.showOther = 0;
     vm.funcTrouble = 0;
+
     var sysDate = new Date().toLocaleString(); 
     vm.feedbackDropdown=[
     {
@@ -188,6 +189,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     //function to execute when Feedback is submitted
     vm.submitFeedback = function() {
+        var funcName;
         var emotion;
         if (vm.selectedEmotion === 0) {
             emotion = 'Happy';
@@ -201,9 +203,26 @@ angular.module('dweUser', ['ionic', 'ui.router'])
             emotion = "Sad";
         }
         
-        
+            
+        if(typeof(vm.functionalityType.name) === 'undefined'){
+            console.log('here');
+            funcName = 'NA';
+        }
+        else{
+            funcName = vm.functionalityType.name;
+        }
 
-        $http.post(appConstants.url + '/api/feedbacks', {demoId: vm.demoId, feedbackType: vm.feedbackChoice.name, functionality: vm.functionalityType.name, experience: emotion ,comments: vm.feedbackUserComments, dateTime : sysDate }).success(function(res){
+         if(vm.feedbackUserComments.length == 0){
+            console.log('here');
+            userComment = 'NA';
+        }
+        else{
+            userComment = vm.feedbackUserComments;
+        }
+
+
+
+        $http.post(appConstants.url + '/api/feedbacks', {demoId: vm.demoId, feedbackType: vm.feedbackChoice.name, functionality: funcName , experience: emotion ,comments: userComment, dateTime : sysDate }).success(function(res){
                 var alertPopup = $ionicPopup.alert({
                     title: 'Thank-you',
                     template: 'Response recorded Successfully !!'
@@ -227,6 +246,8 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         else
         {
             vm.showFunctionDiv = 0;
+            vm.functionalityType = ' ';
+
         }
 
     }
@@ -379,7 +400,24 @@ $scope.closeModalInstruct = function(){
 
 vm.submittroubleTicket = function() {
    
-        $http.post(appConstants.url + '/api/troubleTickets', {demoId: vm.demoId,issue: vm.troubleChoice.name, functionality : vm.troubleFunctionality.name ,comments: vm.troubleTicketUserComments , dateTime : sysDate }).success(function(res){
+    if(typeof(vm.troubleFunctionality.name) === 'undefined'){
+            console.log('here');
+            troubleFunc = 'NA';
+        }
+        else{
+            troubleFunc = vm.troubleFunctionality.name;
+        }
+
+         if(typeof(vm.troubleFunctionality.name) === 'undefined'){
+            console.log('here');
+            troubleComment = 'NA';
+        }
+        else{
+            troubleComment = vm.troubleTicketUserComments;
+        }
+
+
+        $http.post(appConstants.url + '/api/troubleTickets', {demoId: vm.demoId,issue: vm.troubleChoice.name, functionality : troubleFunc ,comments: troubleComment , dateTime : sysDate }).success(function(res){
                 var alertPopup = $ionicPopup.alert({
                     title: 'Thank-you',
                     template: 'Ticket recorded Successfully !!'
