@@ -3,6 +3,7 @@ node_modules
 .temp
 .sass-cache
 app/bower_components
+hooks
 coverage
 platforms
 resources
