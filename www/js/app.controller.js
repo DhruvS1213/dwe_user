@@ -67,7 +67,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         "id":4,
         "name":"Other"
     }
-    ]
+    ];
     var setupSlider = function() {
         vm.data.sliderOptions = {
             initialSlide: 0,
