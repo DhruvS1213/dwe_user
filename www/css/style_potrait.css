@@ -1,6 +1,6 @@
 @media only screen 
-  and (min-device-width: 600px) 
-  and (max-device-width: 960px) 
+  and (min-device-width: 768px) 
+  and (max-device-width: 1024px) 
   and (orientation: portrait) 
   and (-webkit-min-device-pixel-ratio: 1) {
 
@@ -153,14 +153,14 @@ color: #f90;
 
 
 .feedback-button{
-  left: 495px;
+    left: 80%;
     position: fixed;
-    top: 130px;
+    top: 150px;
     z-index: 200 !important;
 }
 
 .button-position{
-    left: 530px;
+    left: 680px;
     position: relative;
     top: 100px;
     z-index: 20 !important;
@@ -236,7 +236,6 @@ color:#fff;
     align-content: center;
     position: relative;
     z-index: 50;
- 
     border-radius: 5px;
 
 }
@@ -290,7 +289,148 @@ input[type="email"]{
     padding: 5px;
 }
     
-input[type="submit"]{
+
+
+.smiley-margin{
+margin-left: 20px;
+    margin-right: 20px
+
+}
+
+.smiley-div{
+
+    padding-top: 8px;
+    padding-bottom: 15px;
+}
+
+.selected-image {
+
+  border: 1px solid black;
+}
+
+.smiley-img
+{
+    float: left;
+    margin-left: 8px;
+    height: 40px;
+    width: 40px;
+ 
+}  
+
+.play_button{
+    width: 9%;
+    position: absolute;
+    left: 75%;
+    z-index: 10;
+    opacity: 0.9;
+    top: 34%;
+
+}
+
+
+
+  .feedback-wrapper{
+            float: right;
+            position: fixed;
+            top: 130px;
+            left: 670px;
+            font-size: 18px;
+            color: #193066;
+    }
+
+
+    .feedback-modal{
+
+       width: 90%;
+    background-color: white;
+    height: 570px;
+    align-content: center;
+    left: 6%;
+    position: relative;
+    top: 20px;
+-webkit-border-radius: 10px;
+        border-radius: 10px;
+    }
+
+    .form-div{
+        position: relative;
+        left: 90px;
+        top: 40px;
+    }
+
+
+
+
+    .form-spacing{
+        padding-top: 8px !important;
+        padding-bottom: 15px !important;
+    }
+
+
+    .label-text{
+    font-size: 16px;
+    font-weight: bold;
+    }
+
+
+
+    input[type="text"]{
+
+        height: 45px;
+        border-style: solid;
+        border-width: 1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .form-spacing{
+        padding-top: 10px;
+        padding-bottom: 30px;
+    }
+
+
+    .label-text{
+    font-size: 16px;
+    }
+
+
+    input[type="email"]{
+
+        height: 45px;
+        border-style: solid;
+        border-width: 1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    .comment-wrapper{
+        height: 100px;
+        border-style: solid;
+        border-width: 1px;
+        width: 450px;
+        border-color: grey;
+        border-radius: 5px;
+        padding: 5px;
+    }
+
+    /*.button-style{
+        color: white;
+        background-color: #002661;
+        font-size: 18px;
+        width: 450px;
+        height: 45px;
+        border: none;
+        border-radius: 4px;
+        left: 90px;
+        position: relative;
+        top: 35px;
+    }*/
+
+    input[type="submit"]{
           color: white;
         background-color: #002661;
         font-size: 18px;
@@ -298,9 +438,8 @@ input[type="submit"]{
         height: 45px;
         border: none;
         border-radius: 4px;
-        left: 18px;
+        left: 90px;
         position: relative;
-        top: 35px;
     }
 
 .smiley-margin{
@@ -328,5 +467,87 @@ margin-left: 20px;
     width: 40px;
  
 }  
+
+.feedback-position{
+        position: fixed;
+    top: 650px;
+    left: 40px;
+     font-size: 18px;
+    color: #193066;
+}
+
+
+  .trouble-modal{
+
+      width: 90%;
+    background-color: white;
+    height: 410px;
+    align-content: center;
+    left: 8%;
+    position: relative;
+    z-index: 50;
+    top: 50px;
+    border-radius: 10px;
+
+
+    }
+
+
+    .trouble-button{
+     left: 640px;
+    position: relative;
+    top: 220px;
+    z-index: 200 !important;
+    }
+
+
+.instModal{
+    width: 60%;
+    height: 400px;
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 21%;
+    margin-top: 5%;
+}
+
+.inst-button{
+    position: relative;
+    top: 20px;
+    left: 84%;
+}
+
+
+.inst-text{
+            position: relative;
+            text-align: center;
+            padding-left: 2%;
+            padding-right: 2%;
+}
+
+
+.feedbackLabelText{
+        font-weight: bold;
+
+    font-size: 15px;
+
+}
+
+.feedbackText{
+    font-weight: normal !important
+}
+
+.label-position{
+    top: -500px;
+    position: relative;
+    color: white;
+    font-size: 20px;
+}
+
+.modalVideo-div{
+        top: 100px;
+    position: relative;
+    width: 90%;
+    left: 5%;
+}
 
 }

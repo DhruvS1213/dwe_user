@@ -168,11 +168,10 @@
 }
 
     .feedback-button{
-           left: 740px;
+            left: 760px;
             position: relative;
-            top: 30px;
+            top: 100px;
             z-index: 200 !important;
-
     }
 
     .slider-pager .slider-pager-page {
@@ -246,7 +245,8 @@
         align-content: center;
         left: 16%;
         position: relative;
-        top: -140px;
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
 
     }
 
@@ -443,6 +443,14 @@ margin-left: 20px;
     opacity: 0.9;
     top: 34%;
 
+}
+
+.label-position{
+    color: white;
+    position: relative;
+    left: 65%;
+    font-size: 20px;
+    top: -435px;
 }
 
 }
