@@ -169,6 +169,28 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     //function to open Feedback Modal
     $scope.openFeedbackModal = function() {
+    $http({
+        method: 'GET',
+        url: appConstants.url + '/api/feedbacks' 
+    }).then(function successCallback(resp)
+    {
+        content = resp.data;
+        for(var i=0;i<content.length;i++)
+       {
+
+            if(content[i].demoId == appConstants.demoId)
+            {
+            vm.feedbackObjectDisplay[i] = content[i];
+            }
+       }
+
+        console.log('inside get content for feedback',vm.feedbackObjectDisplay);
+    
+       
+    }, function errorCallback(response)
+        {
+            console.log('error');
+        });
         vm.feedbackChoice='';
         vm.functionalityType='';
         $scope.modal3.show();
@@ -516,28 +538,6 @@ vm.closeModalTrouble = function() {
             console.log('error');
         });
 
-     $http({
-        method: 'GET',
-        url: appConstants.url + '/api/feedbacks' 
-    }).then(function successCallback(resp)
-    {
-        content = resp.data;
-        for(var i=0;i<content.length;i++)
-       {
-
-            if(content[i].demoId == appConstants.demoId)
-            {
-            vm.feedbackObjectDisplay[i] = content[i];
-            }
-       }
-
-        console.log('inside get content for feedback',vm.feedbackObjectDisplay);
-    
-       
-    }, function errorCallback(response)
-        {
-            console.log('error');
-        });
 
 
 }])
