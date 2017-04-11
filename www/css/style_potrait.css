@@ -116,7 +116,7 @@
 
 .video-position{
 
-    top: 630px;
+    top: 700px;
     position: fixed;
     height: 249px;
     width: 540px;
@@ -320,10 +320,10 @@ margin-left: 20px;
 .play_button{
     width: 9%;
     position: absolute;
-    left: 75%;
+    left: 25%;
     z-index: 10;
     opacity: 0.9;
-    top: 34%;
+    top: 75%;
 
 }
 
