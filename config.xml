@@ -12,6 +12,9 @@
   <content src="index.html"/>
   <access origin="*"/>
   <allow-navigation href="http://*/*"/>
+  
+  <preference name="orientation" value="landscape" />
+  
   <platform name="android">
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
