@@ -330,7 +330,14 @@ angular.module('dweUser', ['ionic', 'ui.router'])
             this.pause();
             this.currentTime = 0;
         }); 
-        $scope.modal2.hide();
+        $scope.modal2.remove();
+            $ionicModal.fromTemplateUrl('templates/modalVideo.html', function($ionicModal) {
+        $scope.modal2 = $ionicModal;
+    }, {
+        scope: $scope,
+        animation: 'slide-in-up'
+    });
+
     };
 
     vm.slide = function(index) {
