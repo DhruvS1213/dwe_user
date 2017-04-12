@@ -134,38 +134,38 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         console.log('touch: timer stopped');
     };
 
-    vm.startVideoTimer = function(){
-       videoModalTimer = $timeout(function(){
-            vm.closeModalVideo();
-        }, appConstants.timerValue);
-       console.log('video timer started');
-    };
+    // vm.startVideoTimer = function(){
+    //    videoModalTimer = $timeout(function(){
+    //         vm.closeModalVideo();
+    //     }, appConstants.timerValue);
+    //    console.log('video timer started');
+    // };
 
-    vm.stopVideoTimer = function(){
-        $timeout.cancel(videoModalTimer);
-        console.log('video timer stoped');
-    }
+    // vm.stopVideoTimer = function(){
+    //     $timeout.cancel(videoModalTimer);
+    //     console.log('video timer stoped');
+    // }
 
-    vm.initializeListener = function(index){
-        console.log('inside initialize listner');
-        document.getElementById('my-video' + index).addEventListener('ended', myHandler1, false)
-        function myHandler1(e){
-            console.log('video ended...');
-            vm.startVideoTimer();
-        }
+    // vm.initializeListener = function(index){
+    //     console.log('inside initialize listner');
+    //     document.getElementById('my-video' + index).addEventListener('ended', myHandler1, false)
+    //     function myHandler1(e){
+    //         console.log('video ended...');
+    //         vm.startVideoTimer();
+    //     }
 
-        document.getElementById('my-video'+ index).addEventListener('pause', myHandler3, false)
-        function myHandler3(e){
-            console.log('video paused...');
-            vm.startVideoTimer();
-        }        
+    //     document.getElementById('my-video'+ index).addEventListener('pause', myHandler3, false)
+    //     function myHandler3(e){
+    //         console.log('video paused...');
+    //         vm.startVideoTimer();
+    //     }        
 
-        document.getElementById('my-video' + index).addEventListener('playing', myHandler2, false)
-        function myHandler2(e){
-            console.log('video playing...');
-            vm.stopVideoTimer();
-        }
-    }
+    //     document.getElementById('my-video' + index).addEventListener('playing', myHandler2, false)
+    //     function myHandler2(e){
+    //         console.log('video playing...');
+    //         vm.stopVideoTimer();
+    //     }
+    // }
 
     //function to open Feedback Modal
     $scope.openFeedbackModal = function() {
@@ -303,7 +303,6 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     $scope.openModalVideo = function(index) {
         $scope.modal2.show();
         $ionicSlideBoxDelegate.slide(index);
-        vm.initializeListener(index);
     };
 
     vm.closeModal = function() {
@@ -311,12 +310,12 @@ angular.module('dweUser', ['ionic', 'ui.router'])
         $scope.modal.hide();
     };
 
-    vm.stopVideo = function(){
-      $('video').each(function(){
-            this.pause();
-            this.currentTime = 0;
-        });  
-    };
+    // vm.stopVideo = function(){
+    //   $('video').each(function(){
+    //         this.pause();
+    //         this.currentTime = 0;
+    //     });  
+    // };
 
     vm.goToSlide = function(index) {
       console.log('goto slide function')
@@ -326,10 +325,10 @@ angular.module('dweUser', ['ionic', 'ui.router'])
 
     vm.closeModalVideo = function() {
         console.log('closemodal function');
-        $('video').each(function(){
-            this.pause();
-            this.currentTime = 0;
-        }); 
+        // $('video').each(function(){
+        //     this.pause();
+        //     this.currentTime = 0;
+        // }); 
         $scope.modal2.remove();
             $ionicModal.fromTemplateUrl('templates/modalVideo.html', function($ionicModal) {
         $scope.modal2 = $ionicModal;

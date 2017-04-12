@@ -4,7 +4,7 @@
             <img src="./img/close_icon.png" height="40px" width="40px" ng-click="uv.closeModalVideo()">
         </div>
 
-        <ion-slide-box on-slide-changed="slideChanged(index);uv.stopVideo();uv.stopVideoTimer();uv.initializeListener(index)" show-pager="true" pager-click="uv.slide(index)">
+        <ion-slide-box on-slide-changed="slideChanged(index)" show-pager="true" pager-click="uv.slide(index)">
             <ion-slide ng-repeat="video in uv.videoPath track by $index">
                 <div class="modalVideo-div">
 
