@@ -8,9 +8,9 @@
             <ion-slide ng-repeat="video in uv.videoPath track by $index">
                 <div class="modalVideo-div">
 
-                    <video ng-attr-id="{{'my-video'+$index}}" class="video-js videocontent" controls preload="auto"
+                    <video class="videoSize" controls preload="auto"
                         >
-                        <source ng-src="{{video}}" type='video/webm'>
+                        <source ng-src="{{video}}" type="video/mp4">
                     </video>
                 </div>
             </ion-slide>

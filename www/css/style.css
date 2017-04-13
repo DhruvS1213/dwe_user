@@ -464,6 +464,13 @@ ul,li {
   list-style-type: disc;
 }
 
+.videoSize{
+      width: 800px;
+    position: relative;
+    top: -80px;
+    left: 60px;
+}
+
 }
 
 
