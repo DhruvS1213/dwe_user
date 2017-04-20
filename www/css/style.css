@@ -33,7 +33,7 @@
 
     .img-wrapper {
         width: 550px;
-        padding-top: 20px;
+        padding-top: 30px;
         padding-left: 20px;
         position: relative;
         height: 150px;
@@ -368,15 +368,14 @@ margin-left: 20px;
 
 .feedback-position{
         position: relative;
-    top: 10px;
     left: 30px;
+    top:-20px;
     font-size: 18px;
     color: #193066;
 }
 
 .troubleTickettext-position{
     position: relative;
-    top: 15px;
     left: 30px;
     font-size: 18px;
     color: #193066;

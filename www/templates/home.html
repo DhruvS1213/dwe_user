@@ -28,12 +28,12 @@
     
     <ion-slides  ng-show = "uv.data.imgArray.length > 0" on-touch="uv.startImageTimer()" class="img-wrapper" options="uv.data.sliderOptions" slider="uv.data.sliderDelegate">
         <ion-slide-page ng-repeat="img in uv.data.imgArray track by $index">
-        <img class="img-content" ng-click="uv.goToSlide($index)" ng-src={{img}} >
+            <img class="img-content" ng-click="uv.goToSlide($index)" ng-src={{img}} >
         </ion-slide-page>
     </ion-slides>
 
     <div ng-show="uv.data.imgArray.length > 0">
-        <p style="position: relative;left: 3%;">Click each image to learn more </p>
+        <p style="position: relative;left: 3%;top:-150px;">Click each image to learn more </p>
     </div>
     
     <div ng-click="openFeedbackModal()" ng-if="uv.userHeadingRequest.length > 0" >
