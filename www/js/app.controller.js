@@ -6,7 +6,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
-    vm.smileyImages=["img/happy.png","img/middle.png","img/sad.png"];
+    vm.smileyImages=["img/happy.jpg","img/neutral.jpg","img/sad.jpg"];
     vm.data.imgArray=[];
     vm.imageDescription = [];
     vm.imageLabel = [];
