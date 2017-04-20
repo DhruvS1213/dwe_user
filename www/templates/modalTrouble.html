@@ -12,7 +12,7 @@
                             <label class="label-text">
                                     Name of the application
                             </label>
-                            <p style="font-size: 18px;padding: 1%;"> {{uv.TroubleHeading}}</p>
+                            <p style="font-size: 18px;padding: 1%;" ng-bind-html="uv.TroubleHeading | trustAsHtml"></p>
 
 
                             <label class="label-text" style="padding-bottom: 1%;">

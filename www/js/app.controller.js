@@ -6,7 +6,7 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     var vm = this;
     var temp = Math.floor((Math.random() * 100) + 1);
     vm.data = {};
-    vm.smileyImages=["img/happy.png","img/middle.png","img/sad.png"];
+    vm.smileyImages=["img/happy.jpg","img/neutral.jpg","img/sad.jpg"];
     vm.data.imgArray=[];
     vm.imageDescription = [];
     vm.imageLabel = [];
@@ -53,19 +53,27 @@ angular.module('dweUser', ['ionic', 'ui.router'])
     vm.trouble = [
     {
         "id":1,
-        "name":"Overall Solution not working"
+        "name":"Screen"
     },
     {
         "id":2,
-        "name":"Specific functionality not working"
+        "name":"No picture on screen"
     },
     {
         "id":3,
-        "name":"App not working"
+        "name":"Not able to enable touch"
     },
     {
         "id":4,
-        "name":"Other"
+        "name":"Camera not working"
+    },
+    {
+        "id":5,
+        "name":"Loudspeaker not working"
+    },
+      {
+        "id":6,
+        "name":"Other issues"
     }
     ];
     var setupSlider = function() {
